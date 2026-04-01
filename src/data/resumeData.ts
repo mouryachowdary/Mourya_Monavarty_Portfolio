@@ -80,7 +80,7 @@ export const projects = [
   {
     title: "Medicare Appointment booking App",
     description: [
-      "Developed a UI-based healthcare booking simulator to test and validate real-world appointment workflows and user interactions."
+      "UI-based healthcare booking simulator."
     ],
     tags: ["Automation", "Testing", "UI"],
     live: "https://medicare-appointmentbooking-app.vercel.app/",
