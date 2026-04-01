@@ -6,19 +6,17 @@ const ProjectsSection = () => {
   return (
     <section id="projects" className="py-16 sm:py-20 lg:py-24">
       <div className="container mx-auto px-4 sm:px-6">
-
         {/* Header */}
         <motion.div
+          className="mb-12 text-center"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-          className="mb-12 text-center"
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.6, ease: "easeOut" }}
         >
           <p className="font-mono text-primary text-xs tracking-widest uppercase mb-2">
             &gt; projects.showcase()
           </p>
-
           <h2 className="text-3xl sm:text-4xl font-bold font-display">
             Featured Projects
           </h2>
@@ -28,56 +26,44 @@ const ProjectsSection = () => {
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
-              key={i}
+              key={project.title}
+              className="group bg-card rounded-lg p-6 flex flex-col justify-between gradient-border hover:box-glow transition-shadow duration-300"
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -4 }}
-              whileTap={{ scale: 0.98 }}
-              className="group bg-card rounded-lg p-6 flex flex-col justify-between 
-                         gradient-border hover:box-glow transition-shadow duration-300"
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{
+                duration: 0.5,
+                delay: i * 0.15,
+                ease: "easeOut",
+              }}
+              tabIndex={0}
             >
-
               {/* CONTENT */}
               <div>
-                {/* TITLE (NO ANIMATION) */}
+                {/* TITLE */}
                 <h3 className="text-lg font-bold mb-2 text-foreground">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION 🔥 CLEAR INTERACTION */}
-                <motion.p
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 1.02 }}
-                  transition={{ duration: 0.2 }}
-                  className="text-sm text-muted-foreground mb-4 leading-relaxed 
-                             px-2 py-1 rounded-md
-                             transition-all duration-300
-                             group-hover:text-white
-                             group-hover:bg-primary/10
-                             group-hover:[text-shadow:0_0_12px_rgba(34,211,238,0.8)]"
+                {/* DESCRIPTION with hover glow */}
+                <p
+                  className="text-sm text-muted-foreground mb-4 leading-relaxed px-2 py-1 rounded-md transition-all duration-300 group-hover:text-foreground group-hover:bg-primary/10 group-hover:[text-shadow:0_0_12px_rgba(34,211,238,0.8)]"
+                  tabIndex={0}
                 >
                   {project.description[0]}
-                </motion.p>
+                </p>
               </div>
 
               {/* TAGS */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
-                  <motion.span
+                  <span
                     key={tag}
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "hsl(174 72% 50% / 0.2)"
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary 
-                               rounded-full border border-primary/20 cursor-default"
+                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full border border-primary/20 cursor-default"
+                    tabIndex={0}
                   >
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
 
@@ -88,8 +74,7 @@ const ProjectsSection = () => {
                     href={project.live}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-sm px-3 py-1 rounded 
-                               bg-primary text-white hover:opacity-90 transition"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded bg-primary text-primary-foreground hover:opacity-90 transition"
                   >
                     <ExternalLink size={14} /> Live
                   </a>
@@ -100,18 +85,15 @@ const ProjectsSection = () => {
                     href={project.github}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-1 text-sm px-3 py-1 rounded 
-                               border border-border hover:bg-muted transition"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded border border-border hover:bg-muted transition"
                   >
                     <Github size={14} /> Code
                   </a>
                 )}
               </div>
-
             </motion.div>
           ))}
         </div>
-
       </div>
     </section>
   );
