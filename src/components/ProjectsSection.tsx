@@ -41,13 +41,12 @@ const ProjectsSection = () => {
 
               {/* CONTENT */}
               <div>
-                {/* TITLE */}
-                <h3 className="text-lg font-bold mb-2 text-foreground 
-                               group-hover:text-primary transition">
+                {/* TITLE ❌ NO ANIMATION */}
+                <h3 className="text-lg font-bold mb-2 text-foreground">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION 🔥 */}
+                {/* DESCRIPTION ✅ ONLY HERE */}
                 <motion.p
                   whileHover={{ color: "#ffffff" }}
                   whileTap={{ scale: 1.01 }}
@@ -61,7 +60,7 @@ const ProjectsSection = () => {
                 </motion.p>
               </div>
 
-              {/* TAGS */}
+              {/* TAGS ✅ ONLY HERE */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <motion.span
