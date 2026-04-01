@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FolderGit2 } from "lucide-react";
+import { ExternalLink, Github } from "lucide-react";
 import { projects } from "@/data/resumeData";
 
 const ProjectsSection = () => {
@@ -11,101 +11,83 @@ const ProjectsSection = () => {
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.2 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="mb-12 sm:mb-16"
+          className="mb-12 text-center"
         >
-          <p className="font-mono text-primary text-xs sm:text-sm tracking-widest uppercase mb-2">
+          <p className="font-mono text-primary text-xs tracking-widest uppercase mb-2">
             &gt; projects.showcase()
           </p>
 
           <h2 className="text-3xl sm:text-4xl font-bold font-display">
-            Automation Testing Project
+            Featured Projects
           </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="flex flex-col items-start gap-8">
+        {/* GRID (IMPORTANT CHANGE 🔥) */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+
           {projects.map((project, i) => (
             <motion.div
               key={i}
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: i * 0.15 }}
-              whileHover={{
-                y: -6,
-                boxShadow: "0 0 25px hsl(174 72% 50% / 0.25)",
-              }}
-              className="bg-card rounded-lg p-6 gradient-border flex flex-col w-full max-w-2xl"
+              transition={{ delay: i * 0.1 }}
+              whileHover={{ y: -10 }}
+              className="bg-card border border-border rounded-xl p-6 flex flex-col justify-between hover:shadow-xl transition-all"
             >
-              {/* Icon */}
-              <div className="flex items-center mb-4">
-                <motion.div
-                  whileHover={{
-                    rotate: [0, -10, 10, 0],
-                    scale: 1.2,
-                    filter: "drop-shadow(0 0 10px hsl(174 72% 50% / 0.8))",
-                  }}
-                  whileTap={{
-                    scale: 0.9,
-                    rotate: -10,
-                    filter: "drop-shadow(0 0 12px hsl(174 72% 50% / 1))",
-                  }}
-                  animate={{
-                    y: [0, -2, 0],
-                  }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <FolderGit2 className="w-8 h-8 text-primary" />
-                </motion.div>
+
+              {/* TITLE */}
+              <div>
+                <h3 className="text-lg font-bold mb-2">
+                  {project.title}
+                </h3>
+
+                {/* DESCRIPTION */}
+                <p className="text-sm text-muted-foreground mb-4">
+                  {project.description[0]}
+                </p>
               </div>
 
-              {/* Title */}
-              <h3 className="text-lg font-bold font-display text-foreground mb-1">
-                {project.title.split("(")[0].trim()}
-              </h3>
-
-              <p className="text-sm text-primary font-mono mb-3">
-                ({project.title.split("(")[1]}
-              </p>
-
-              {/* Description */}
-              <ul className="text-sm text-muted-foreground mb-6 flex-1 space-y-3">
-                {project.description.map((point, index) => (
-                  <motion.li
-                    key={index}
-                    className="flex items-start gap-3 leading-relaxed"
-                    whileHover={{ x: 4, color: "hsl(200, 20%, 90%)" }}
-                    transition={{ duration: 0.15 }}
-                  >
-                    <span className="w-2 h-2 bg-primary rounded-full mt-2"></span>
-                    <span>{point}</span>
-                  </motion.li>
-                ))}
-              </ul>
-
-              {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-auto">
+              {/* TAGS */}
+              <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
-                  <motion.span
+                  <span
                     key={tag}
-                    whileHover={{
-                      scale: 1.1,
-                      backgroundColor: "hsl(174 72% 50% / 0.2)",
-                    }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 400 }}
-                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full border border-primary/20"
+                    className="text-xs px-2 py-1 rounded bg-primary/10 text-primary"
                   >
                     {tag}
-                  </motion.span>
+                  </span>
                 ))}
               </div>
+
+              {/* BUTTONS 🔥 */}
+              <div className="flex gap-3 mt-auto">
+                {project.live && (
+                  <a
+                    href={project.live}
+                    target="_blank"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded bg-primary text-white hover:opacity-90"
+                  >
+                    <ExternalLink size={14} /> Live
+                  </a>
+                )}
+
+                {project.github && (
+                  <a
+                    href={project.github}
+                    target="_blank"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded border border-border hover:bg-muted"
+                  >
+                    <Github size={14} /> Code
+                  </a>
+                )}
+              </div>
+
             </motion.div>
           ))}
-        </div>
 
+        </div>
       </div>
     </section>
   );
