@@ -85,7 +85,16 @@ export const projects = [
     tags: ["Automation", "Testing", "UI"],
     live: "https://medicare-appointmentbooking-app.vercel.app/",
     github: "https://github.com/mouryachowdary/medicare-appointmentbooking-app.git"
-  }
+  },
+  {
+    title: "Portfolio",
+    description: [
+      "Developed a responsive portfolio website using React, TypeScript, and Tailwind CSS, integrated with Framer Motion for seamless animations and interactions, to effectively showcase work experiences, projects and technical skills."
+      ],
+    tags: [" React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Develpoment"],
+    live: "https://mouryamonavarty.vercel.app/",
+    github: "https://github.com/mouryachowdary/Mourya_Monavarty_Portfolio.git"
+      ],
 ];
 
 export const skillGroups = [
