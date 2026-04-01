@@ -72,7 +72,7 @@ export const projects = [
   {
     title: "Medicare Booking Automation",
     description: [
-      "End-to-end automation using Playwright for booking workflows and validation"
+      "Implemented end-to-end automation of booking workflows using Playwright, including user flow validation, slot selection, and system behavior verification."
     ],
     tags: ["Playwright", "TypeScript", "E2E"],
     github: "https://github.com/mouryachowdary/MedSchedule-Project-Playwright.git"
@@ -80,7 +80,7 @@ export const projects = [
   {
     title: "Medicare Appointment booking App",
     description: [
-      "UI-based healthcare booking simulator"
+      "Developed a UI-based healthcare booking simulator to test and validate real-world appointment workflows and user interactions."
     ],
     tags: ["Automation", "Testing", "UI"],
     live: "https://medicare-appointmentbooking-app.vercel.app/",
