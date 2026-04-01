@@ -72,7 +72,7 @@ export const projects = [
   {
     title: "Medicare Booking Automation",
     description: [
-      "Implemented end-to-end automation of booking workflows using Playwright, including user flow validation, slot selection, and system behavior verification."
+      "End-to-end automation using Playwright for booking workflows and validation."
     ],
     tags: ["Playwright", "TypeScript", "E2E"],
     github: "https://github.com/mouryachowdary/MedSchedule-Project-Playwright.git"
