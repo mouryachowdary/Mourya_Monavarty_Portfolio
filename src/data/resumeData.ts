@@ -82,7 +82,7 @@ export const projects = [
     description: [
       "UI-based healthcare booking simulator."
     ],
-    tags: ["Automation", "Testing", "UI"],
+    tags: ["Healthcare", "Appointment Booking", "Patient Scheduling", "Booking System", "User Flow"],
     live: "https://medicare-appointmentbooking-app.vercel.app/",
     github: "https://github.com/mouryachowdary/medicare-appointmentbooking-app.git"
   },
