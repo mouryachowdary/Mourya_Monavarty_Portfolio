@@ -41,26 +41,28 @@ const ProjectsSection = () => {
 
               {/* CONTENT */}
               <div>
-                {/* TITLE ❌ NO ANIMATION */}
+                {/* TITLE (NO ANIMATION) */}
                 <h3 className="text-lg font-bold mb-2 text-foreground">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION ✅ ONLY HERE */}
+                {/* DESCRIPTION 🔥 CLEAR INTERACTION */}
                 <motion.p
-                  whileHover={{ color: "#ffffff" }}
-                  whileTap={{ scale: 1.01 }}
+                  whileHover={{ scale: 1.02 }}
+                  whileTap={{ scale: 1.02 }}
                   transition={{ duration: 0.2 }}
                   className="text-sm text-muted-foreground mb-4 leading-relaxed 
+                             px-2 py-1 rounded-md
                              transition-all duration-300
                              group-hover:text-white
-                             group-hover:[text-shadow:0_0_6px_rgba(255,255,255,0.4)]"
+                             group-hover:bg-primary/10
+                             group-hover:[text-shadow:0_0_12px_rgba(34,211,238,0.8)]"
                 >
                   {project.description[0]}
                 </motion.p>
               </div>
 
-              {/* TAGS ✅ ONLY HERE */}
+              {/* TAGS */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <motion.span
