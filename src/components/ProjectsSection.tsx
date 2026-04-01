@@ -24,7 +24,7 @@ const ProjectsSection = () => {
           </h2>
         </motion.div>
 
-        {/* GRID (IMPORTANT CHANGE 🔥) */}
+        {/* GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
 
           {projects.map((project, i) => (
@@ -33,41 +33,50 @@ const ProjectsSection = () => {
               initial={{ opacity: 0, y: 40 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="bg-card border border-border rounded-xl p-6 flex flex-col justify-between hover:shadow-xl transition-all"
+              whileHover={{
+                y: -10,
+                boxShadow: "0 0 30px rgba(34, 211, 238, 0.2)"
+              }}
+              className="group bg-card border border-border rounded-xl p-6 flex flex-col justify-between transition-all duration-300"
             >
 
               {/* TITLE */}
               <div>
-                <h3 className="text-lg font-bold mb-2">
+                <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-white transition">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION */}
-                <p className="text-sm text-muted-foreground mb-4">
+                {/* DESCRIPTION 🔥 */}
+                <p className="text-sm text-muted-foreground mb-4 transition-all duration-300 group-hover:text-white group-hover:tracking-wide">
                   {project.description[0]}
                 </p>
               </div>
 
-              {/* TAGS */}
+              {/* TAGS 🔥 */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
-                  <span
+                  <motion.span
                     key={tag}
-                    className="text-xs px-2 py-1 rounded bg-primary/10 text-primary"
+                    whileHover={{
+                      scale: 1.1,
+                      boxShadow: "0 0 12px rgba(34, 211, 238, 0.7)"
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300 }}
+                    className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 cursor-pointer hover:bg-primary/20 hover:text-white transition"
                   >
                     {tag}
-                  </span>
+                  </motion.span>
                 ))}
               </div>
 
-              {/* BUTTONS 🔥 */}
+              {/* BUTTONS */}
               <div className="flex gap-3 mt-auto">
                 {project.live && (
                   <a
                     href={project.live}
                     target="_blank"
-                    className="flex items-center gap-1 text-sm px-3 py-1 rounded bg-primary text-white hover:opacity-90"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded bg-primary text-white hover:opacity-90 transition"
                   >
                     <ExternalLink size={14} /> Live
                   </a>
@@ -77,7 +86,7 @@ const ProjectsSection = () => {
                   <a
                     href={project.github}
                     target="_blank"
-                    className="flex items-center gap-1 text-sm px-3 py-1 rounded border border-border hover:bg-muted"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded border border-border hover:bg-muted transition"
                   >
                     <Github size={14} /> Code
                   </a>
