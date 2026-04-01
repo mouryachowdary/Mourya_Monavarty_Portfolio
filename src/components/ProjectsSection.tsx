@@ -20,7 +20,7 @@ const ProjectsSection = () => {
           </p>
 
           <h2 className="text-3xl sm:text-4xl font-bold font-display">
-            Automation Testing Project
+            Featured Projects
           </h2>
         </motion.div>
 
