@@ -24,19 +24,19 @@ const ProjectsSection = () => {
           </h2>
         </motion.div>
 
-        {/* Cards */}
-        <div className="flex flex-col items-start gap-8">
+        {/* ✅ GRID LAYOUT */}
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -40 }} // ✅ match Experience
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -4 }} // ✅ subtle lift
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
-              className="group bg-card rounded-lg p-6 gradient-border flex flex-col w-full max-w-2xl 
-                         hover:box-glow transition-shadow duration-300"
+              className="group bg-card rounded-lg p-6 gradient-border 
+                         hover:box-glow transition-shadow duration-300 flex flex-col"
             >
 
               {/* Icon */}
@@ -59,40 +59,30 @@ const ProjectsSection = () => {
                 </motion.div>
               </div>
 
-              {/* Title (NO animation) */}
-              <h3 className="text-lg font-bold font-display text-foreground mb-1">
-                {project.title.split("(")[0].trim()}
+              {/* ✅ Title (clean, no animation, no brackets issue) */}
+              <h3 className="text-lg font-bold font-display text-foreground mb-3">
+                {project.title}
               </h3>
 
-              <p className="text-sm text-primary font-mono mb-3">
-                ({project.title.split("(")[1]}
-              </p>
-
-              {/* 🔥 DESCRIPTION (FIXED LIKE SKILLS + EXPERIENCE) */}
-              <ul className="text-sm text-muted-foreground mb-6 flex-1 space-y-3">
+              {/* ✅ Description (no bullets, interactive like other sections) */}
+              <div className="text-sm text-muted-foreground mb-6 space-y-2">
                 {project.description.map((point, index) => (
-                  <motion.li
+                  <motion.p
                     key={index}
-                    className="flex items-start gap-3 leading-relaxed transition-all duration-200"
                     whileHover={{
                       x: 6,
-                      color: "hsl(174, 72%, 50%)", // ✅ visible highlight
+                      color: "hsl(174, 72%, 50%)",
                     }}
-                    whileTap={{
-                      x: 6,
-                    }}
+                    whileTap={{ x: 6 }}
+                    transition={{ duration: 0.2 }}
+                    className="leading-relaxed"
                   >
-                    <motion.span
-                      className="w-2 h-2 bg-primary rounded-full mt-2"
-                      whileHover={{ scale: 1.8 }}
-                      whileTap={{ scale: 1.8 }}
-                    />
-                    <span>{point}</span>
-                  </motion.li>
+                    {point}
+                  </motion.p>
                 ))}
-              </ul>
+              </div>
 
-              {/* Tags (already perfect) */}
+              {/* Tags */}
               <div className="flex flex-wrap gap-2 mt-auto">
                 {project.tags.map((tag) => (
                   <motion.span
@@ -103,7 +93,8 @@ const ProjectsSection = () => {
                     }}
                     whileTap={{ scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 400 }}
-                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full border border-primary/20"
+                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary 
+                               rounded-full border border-primary/20"
                   >
                     {tag}
                   </motion.span>
