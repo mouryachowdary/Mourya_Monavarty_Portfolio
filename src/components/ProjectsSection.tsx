@@ -29,28 +29,39 @@ const ProjectsSection = () => {
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, x: -40 }}   // 👈 SAME as experience
+              initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -4 }}             // 👈 subtle lift (same)
+              whileHover={{ y: -4 }}
               whileTap={{ scale: 0.98 }}
-              className="bg-card rounded-lg p-6 flex flex-col justify-between 
+              className="group bg-card rounded-lg p-6 flex flex-col justify-between 
                          gradient-border hover:box-glow transition-shadow duration-300"
             >
 
-              {/* TITLE + DESC */}
+              {/* CONTENT */}
               <div>
-                <h3 className="text-lg font-bold mb-2 text-foreground">
+                {/* TITLE */}
+                <h3 className="text-lg font-bold mb-2 text-foreground 
+                               group-hover:text-primary transition">
                   {project.title}
                 </h3>
 
-                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
+                {/* DESCRIPTION 🔥 */}
+                <motion.p
+                  whileHover={{ color: "#ffffff" }}
+                  whileTap={{ scale: 1.01 }}
+                  transition={{ duration: 0.2 }}
+                  className="text-sm text-muted-foreground mb-4 leading-relaxed 
+                             transition-all duration-300
+                             group-hover:text-white
+                             group-hover:[text-shadow:0_0_6px_rgba(255,255,255,0.4)]"
+                >
                   {project.description[0]}
-                </p>
+                </motion.p>
               </div>
 
-              {/* TAGS (MATCHED STYLE) */}
+              {/* TAGS */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <motion.span
@@ -75,6 +86,7 @@ const ProjectsSection = () => {
                   <a
                     href={project.live}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1 text-sm px-3 py-1 rounded 
                                bg-primary text-white hover:opacity-90 transition"
                   >
@@ -86,6 +98,7 @@ const ProjectsSection = () => {
                   <a
                     href={project.github}
                     target="_blank"
+                    rel="noopener noreferrer"
                     className="flex items-center gap-1 text-sm px-3 py-1 rounded 
                                border border-border hover:bg-muted transition"
                   >
