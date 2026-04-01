@@ -46,7 +46,7 @@ const ProjectsSection = () => {
 
                 {/* DESCRIPTION — matches skills hover glow */}
                 <p
-                  className="text-sm text-muted-foreground mb-4 leading-relaxed px-2 py-1 rounded-md transition-all duration-300 group-hover:text-foreground group-hover:bg-primary/10 group-hover:[text-shadow:0_0_12px_rgba(34,211,238,0.8)]"
+                  className="text-sm text-muted-foreground mb-4 leading-relaxed px-2 py-1 rounded-md transition-all duration-300 hover:text-foreground hover:bg-primary/10 hover:scale-105 origin-left cursor-default"
                   tabIndex={0}
                 >
                   {project.description[0]}
