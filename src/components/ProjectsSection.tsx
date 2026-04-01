@@ -14,12 +14,8 @@ const ProjectsSection = () => {
           viewport={{ once: true, amount: 0.3 }}
           transition={{ duration: 0.6, ease: "easeOut" }}
         >
-          <p className="font-mono text-primary text-xs tracking-widest uppercase mb-2">
-            &gt; projects.showcase()
-          </p>
-          <h2 className="text-3xl sm:text-4xl font-bold font-display">
-            Featured Projects
-          </h2>
+          <p className="font-mono text-primary text-xs tracking-widest uppercase mb-2">&gt; projects.showcase()</p>
+          <h2 className="text-3xl sm:text-4xl font-bold font-display">Featured Projects</h2>
         </motion.div>
 
         {/* GRID */}
@@ -40,9 +36,7 @@ const ProjectsSection = () => {
             >
               {/* CONTENT */}
               <div>
-                <h3 className="text-lg font-bold mb-2 text-foreground">
-                  {project.title}
-                </h3>
+                <h3 className="text-lg font-bold mb-2 text-foreground">{project.title}</h3>
 
                 {/* DESCRIPTION — matches skills hover glow */}
                 <p
