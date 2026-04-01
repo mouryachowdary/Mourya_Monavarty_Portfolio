@@ -70,21 +70,23 @@ export const experiences = [
 
 export const projects = [
   {
-    title:
-      "GreytHR End-to-End Test Automation Framework (Playwright + TypeScript)",
+    title: "Medicare Booking Automation",
     description: [
-      "Built E2E UI automation framework using Playwright + TypeScript, achieving 85% test coverage across 50+ test cases",
-      "Implemented scalable Page Object Model (POM) architecture, reducing test maintenance effort by 30%",
-      "Enabled parallel test execution, reducing overall test suite runtime by 60%",
-      "Designed custom test hooks (beforeEach / afterEach) for consistent test setup and teardown",
-      "Developed reusable utility functions, eliminating 40% of code duplication across test modules",
-      "Integrated CI/CD pipeline using GitHub Actions for automated test execution on every pull request",
-      "Added Allure/HTML reporting and structured logging for improved test visibility and faster debugging",
-      "Executed cross-browser testing across Chromium, Firefox, and WebKit to ensure consistent behavior",
-      "Implemented retry mechanisms and smart synchronization strategies to handle flaky test scenarios",
+      "End-to-end automation using Playwright for booking workflows and validation"
     ],
-    tags: ["Playwright", "TypeScript", "POM", "Git", "CI/CD", "API Testing"],
+    tags: ["Playwright", "TypeScript", "E2E"],
+    live: "https://medicare-booking-automation.vercel.app/",
+    github: "https://github.com/mouryachowdary/MedSchedule-Project-Playwright.git"
   },
+  {
+    title: "Medicare Appointment booking App",
+    description: [
+      "UI-based healthcare booking simulator"
+    ],
+    tags: ["Automation", "Testing", "UI"],
+    live: "https://medicare-booking-automation.vercel.app/",
+    github: "https://github.com/mouryachowdary/medicare-appointmentbooking-app.git"
+  }
 ];
 
 export const skillGroups = [
