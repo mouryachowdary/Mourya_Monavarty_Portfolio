@@ -40,12 +40,11 @@ const ProjectsSection = () => {
             >
               {/* CONTENT */}
               <div>
-                {/* TITLE */}
                 <h3 className="text-lg font-bold mb-2 text-foreground">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION with hover glow */}
+                {/* DESCRIPTION — matches skills hover glow */}
                 <p
                   className="text-sm text-muted-foreground mb-4 leading-relaxed px-2 py-1 rounded-md transition-all duration-300 group-hover:text-foreground group-hover:bg-primary/10 group-hover:[text-shadow:0_0_12px_rgba(34,211,238,0.8)]"
                   tabIndex={0}
@@ -54,14 +53,15 @@ const ProjectsSection = () => {
                 </p>
               </div>
 
-              {/* TAGS */}
+              {/* TAGS — matches skills items style with dot + hover glow */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full border border-primary/20 cursor-default"
+                    className="flex items-center gap-1.5 px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full border border-primary/20 cursor-default transition-all duration-300 hover:bg-primary/20 hover:border-primary/40 hover:[text-shadow:0_0_10px_rgba(34,211,238,0.7)] hover:scale-105"
                     tabIndex={0}
                   >
+                    <span className="w-1 h-1 rounded-full bg-primary/60 group-hover:bg-primary transition-colors duration-300" />
                     {tag}
                   </span>
                 ))}
