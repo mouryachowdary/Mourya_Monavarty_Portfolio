@@ -26,44 +26,43 @@ const ProjectsSection = () => {
 
         {/* GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-
           {projects.map((project, i) => (
             <motion.div
               key={i}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: i * 0.1 }}
-              whileHover={{
-                y: -10,
-                boxShadow: "0 0 30px rgba(34, 211, 238, 0.2)"
-              }}
-              className="group bg-card border border-border rounded-xl p-6 flex flex-col justify-between transition-all duration-300"
+              initial={{ opacity: 0, x: -40 }}   // 👈 SAME as experience
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: i * 0.15 }}
+              whileHover={{ y: -4 }}             // 👈 subtle lift (same)
+              whileTap={{ scale: 0.98 }}
+              className="bg-card rounded-lg p-6 flex flex-col justify-between 
+                         gradient-border hover:box-glow transition-shadow duration-300"
             >
 
-              {/* TITLE */}
+              {/* TITLE + DESC */}
               <div>
-                <h3 className="text-lg font-bold mb-2 text-foreground group-hover:text-white transition">
+                <h3 className="text-lg font-bold mb-2 text-foreground">
                   {project.title}
                 </h3>
 
-                {/* DESCRIPTION 🔥 */}
-                <p className="text-sm text-muted-foreground mb-4 transition-all duration-300 group-hover:text-white group-hover:tracking-wide">
+                <p className="text-sm text-muted-foreground mb-4 leading-relaxed">
                   {project.description[0]}
                 </p>
               </div>
 
-              {/* TAGS 🔥 */}
+              {/* TAGS (MATCHED STYLE) */}
               <div className="flex flex-wrap gap-2 mb-4">
                 {project.tags.map((tag) => (
                   <motion.span
                     key={tag}
                     whileHover={{
                       scale: 1.1,
-                      boxShadow: "0 0 12px rgba(34, 211, 238, 0.7)"
+                      backgroundColor: "hsl(174 72% 50% / 0.2)"
                     }}
                     whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 300 }}
-                    className="text-xs px-3 py-1 rounded-full bg-primary/10 text-primary border border-primary/20 cursor-pointer hover:bg-primary/20 hover:text-white transition"
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary 
+                               rounded-full border border-primary/20 cursor-default"
                   >
                     {tag}
                   </motion.span>
@@ -76,7 +75,8 @@ const ProjectsSection = () => {
                   <a
                     href={project.live}
                     target="_blank"
-                    className="flex items-center gap-1 text-sm px-3 py-1 rounded bg-primary text-white hover:opacity-90 transition"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded 
+                               bg-primary text-white hover:opacity-90 transition"
                   >
                     <ExternalLink size={14} /> Live
                   </a>
@@ -86,7 +86,8 @@ const ProjectsSection = () => {
                   <a
                     href={project.github}
                     target="_blank"
-                    className="flex items-center gap-1 text-sm px-3 py-1 rounded border border-border hover:bg-muted transition"
+                    className="flex items-center gap-1 text-sm px-3 py-1 rounded 
+                               border border-border hover:bg-muted transition"
                   >
                     <Github size={14} /> Code
                   </a>
@@ -95,8 +96,8 @@ const ProjectsSection = () => {
 
             </motion.div>
           ))}
-
         </div>
+
       </div>
     </section>
   );
