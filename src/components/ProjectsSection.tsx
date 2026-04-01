@@ -1,0 +1,114 @@
+import { motion } from "framer-motion";
+import { FolderGit2 } from "lucide-react";
+import { projects } from "@/data/resumeData";
+
+const ProjectsSection = () => {
+  return (
+    <section id="projects" className="py-16 sm:py-20 lg:py-24">
+      <div className="container mx-auto px-4 sm:px-6">
+
+        {/* Header */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.6 }}
+          className="mb-12 sm:mb-16"
+        >
+          <p className="font-mono text-primary text-xs sm:text-sm tracking-widest uppercase mb-2">
+            &gt; projects.showcase()
+          </p>
+
+          <h2 className="text-3xl sm:text-4xl font-bold font-display">
+            Automation Testing Project
+          </h2>
+        </motion.div>
+
+        {/* Cards */}
+        <div className="flex flex-col items-start gap-8">
+          {projects.map((project, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: i * 0.15 }}
+              whileHover={{
+                y: -6,
+                boxShadow: "0 0 25px hsl(174 72% 50% / 0.25)",
+              }}
+              className="bg-card rounded-lg p-6 gradient-border flex flex-col w-full max-w-2xl"
+            >
+              {/* Icon */}
+              <div className="flex items-center mb-4">
+                <motion.div
+                  whileHover={{
+                    rotate: [0, -10, 10, 0],
+                    scale: 1.2,
+                    filter: "drop-shadow(0 0 10px hsl(174 72% 50% / 0.8))",
+                  }}
+                  whileTap={{
+                    scale: 0.9,
+                    rotate: -10,
+                    filter: "drop-shadow(0 0 12px hsl(174 72% 50% / 1))",
+                  }}
+                  animate={{
+                    y: [0, -2, 0],
+                  }}
+                  transition={{ duration: 0.5 }}
+                >
+                  <FolderGit2 className="w-8 h-8 text-primary" />
+                </motion.div>
+              </div>
+
+              {/* Title */}
+              <h3 className="text-lg font-bold font-display text-foreground mb-1">
+                {project.title.split("(")[0].trim()}
+              </h3>
+
+              <p className="text-sm text-primary font-mono mb-3">
+                ({project.title.split("(")[1]}
+              </p>
+
+              {/* Description */}
+              <ul className="text-sm text-muted-foreground mb-6 flex-1 space-y-3">
+                {project.description.map((point, index) => (
+                  <motion.li
+                    key={index}
+                    className="flex items-start gap-3 leading-relaxed"
+                    whileHover={{ x: 4, color: "hsl(200, 20%, 90%)" }}
+                    transition={{ duration: 0.15 }}
+                  >
+                    <span className="w-2 h-2 bg-primary rounded-full mt-2"></span>
+                    <span>{point}</span>
+                  </motion.li>
+                ))}
+              </ul>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-2 mt-auto">
+                {project.tags.map((tag) => (
+                  <motion.span
+                    key={tag}
+                    whileHover={{
+                      scale: 1.1,
+                      backgroundColor: "hsl(174 72% 50% / 0.2)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 400 }}
+                    className="px-3 py-1 text-xs font-mono bg-primary/10 text-primary rounded-full border border-primary/20"
+                  >
+                    {tag}
+                  </motion.span>
+                ))}
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+      </div>
+    </section>
+  );
+};
+
+export default ProjectsSection;
