@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { FolderGit2 } from "lucide-react";
+import { FolderGit2, Github, ExternalLink } from "lucide-react";
 import { projects } from "@/data/resumeData";
 
 const ProjectsSection = () => {
@@ -59,19 +59,19 @@ const ProjectsSection = () => {
                 </motion.div>
               </div>
 
-              {/* Title (no animation) */}
+              {/* Title */}
               <h3 className="text-lg font-bold font-display text-foreground mb-3">
                 {project.title}
               </h3>
 
-              {/* 🔥 Description (FINAL FIX) */}
+              {/* Description */}
               <div className="text-sm text-muted-foreground mb-6 space-y-2">
                 {project.description.map((point, index) => (
                   <motion.p
                     key={index}
                     whileHover={{
                       x: 6,
-                      color: "hsl(174, 72%, 50%)", // 🔥 highlight color
+                      color: "hsl(174, 72%, 50%)",
                     }}
                     whileTap={{
                       x: 6,
@@ -86,7 +86,7 @@ const ProjectsSection = () => {
               </div>
 
               {/* Tags */}
-              <div className="flex flex-wrap gap-2 mt-auto">
+              <div className="flex flex-wrap gap-2 mb-6">
                 {project.tags.map((tag) => (
                   <motion.span
                     key={tag}
@@ -102,6 +102,51 @@ const ProjectsSection = () => {
                     {tag}
                   </motion.span>
                 ))}
+              </div>
+
+              {/* 🔥 LINKS SECTION */}
+              <div className="flex gap-3 mt-auto">
+
+                {/* GitHub */}
+                {project.github && (
+                  <motion.a
+                    href={project.github}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 0 12px hsl(174 72% 50% / 0.6)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-mono 
+                               border border-primary/30 rounded-md text-primary 
+                               hover:bg-primary/10 transition"
+                  >
+                    <Github className="w-4 h-4" />
+                    Code
+                  </motion.a>
+                )}
+
+                {/* Live Demo */}
+                {project.live && (
+                  <motion.a
+                    href={project.live}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 0 12px hsl(174 72% 50% / 0.6)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-mono 
+                               border border-primary/30 rounded-md text-primary 
+                               hover:bg-primary/10 transition"
+                  >
+                    <ExternalLink className="w-4 h-4" />
+                    Live
+                  </motion.a>
+                )}
+
               </div>
 
             </motion.div>
