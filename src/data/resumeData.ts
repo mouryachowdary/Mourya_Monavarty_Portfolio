@@ -94,7 +94,7 @@ export const projects = [
     tags: [" React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Develpoment"],
     live: "https://mouryamonavarty.vercel.app/",
     github: "https://github.com/mouryachowdary/Mourya_Monavarty_Portfolio.git"
-      ]
+  }
 ];
 
 export const skillGroups = [
