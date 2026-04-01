@@ -24,7 +24,7 @@ const ProjectsSection = () => {
           </h2>
         </motion.div>
 
-        {/* ✅ GRID LAYOUT */}
+        {/* GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, i) => (
             <motion.div
@@ -59,23 +59,26 @@ const ProjectsSection = () => {
                 </motion.div>
               </div>
 
-              {/* ✅ Title (clean, no animation, no brackets issue) */}
+              {/* Title (no animation) */}
               <h3 className="text-lg font-bold font-display text-foreground mb-3">
                 {project.title}
               </h3>
 
-              {/* ✅ Description (no bullets, interactive like other sections) */}
+              {/* 🔥 Description (FINAL FIX) */}
               <div className="text-sm text-muted-foreground mb-6 space-y-2">
                 {project.description.map((point, index) => (
                   <motion.p
                     key={index}
                     whileHover={{
                       x: 6,
+                      color: "hsl(174, 72%, 50%)", // 🔥 highlight color
+                    }}
+                    whileTap={{
+                      x: 6,
                       color: "hsl(174, 72%, 50%)",
                     }}
-                    whileTap={{ x: 6 }}
                     transition={{ duration: 0.2 }}
-                    className="leading-relaxed"
+                    className="leading-relaxed cursor-default"
                   >
                     {point}
                   </motion.p>
