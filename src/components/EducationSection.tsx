@@ -23,13 +23,16 @@ const EducationSection = () => {
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8">
+
           {/* Education */}
           <div className="space-y-6">
             <h3 className="text-lg font-mono text-primary mb-4 flex items-center gap-2 group">
               <motion.div
                 whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
+                whileTap={{ scale: 1.15 }}
+                transition={{ duration: 0.5 }}
               >
-                <GraduationCap className="w-5 h-5" />
+                <GraduationCap className="w-5 h-5 group-hover:drop-shadow-[0_0_8px_hsl(174,72%,50%,0.6)] transition-all duration-300" />
               </motion.div>
               Education
             </h3>
@@ -39,35 +42,64 @@ const EducationSection = () => {
                 key={i}
                 initial={{ opacity: 0, x: -30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.15 }}
-                className="bg-card rounded-lg p-6 gradient-border"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 0 25px hsl(174 72% 50% / 0.2)",
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-card rounded-lg p-6 gradient-border transition-shadow duration-300 cursor-default"
               >
-                <span className="text-primary text-xs">{edu.period}</span>
-                <h4 className="font-bold">{edu.degree}</h4>
-                <p className="text-muted-foreground text-sm">{edu.school}</p>
+                <span className="font-mono text-xs text-primary tracking-wider">
+                  {edu.period}
+                </span>
+
+                <h4 className="text-foreground font-bold mt-1">
+                  {edu.degree}
+                </h4>
+
+                <p className="text-muted-foreground text-sm mt-1">
+                  {edu.school}
+                </p>
               </motion.div>
             ))}
           </div>
 
           {/* How I Work */}
           <div className="space-y-6">
-            <h3 className="text-lg font-mono text-primary mb-4 flex items-center gap-2">
-              <Lightbulb className="w-5 h-5" />
+            <h3 className="text-lg font-mono text-primary mb-4 flex items-center gap-2 group">
+              <motion.div
+                whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
+                whileTap={{ scale: 1.15 }}
+                transition={{ duration: 0.5 }}
+              >
+                <Lightbulb className="w-5 h-5 group-hover:drop-shadow-[0_0_8px_hsl(174,72%,50%,0.6)] transition-all duration-300" />
+              </motion.div>
               How I Work
             </h3>
 
-            {howIWork.map((text, i) => (
+            {howIWork.map((paragraph, i) => (
               <motion.div
                 key={i}
                 initial={{ opacity: 0, x: 30 }}
                 whileInView={{ opacity: 1, x: 0 }}
-                transition={{ delay: i * 0.15 }}
-                className="bg-card rounded-lg p-6 gradient-border"
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.15 }}
+                whileHover={{
+                  y: -4,
+                  boxShadow: "0 0 25px hsl(174 72% 50% / 0.2)",
+                }}
+                whileTap={{ scale: 0.97 }}
+                className="bg-card rounded-lg p-6 gradient-border transition-shadow duration-300 cursor-default"
               >
-                <p className="text-sm">{text}</p>
+                <p className="text-foreground text-sm leading-relaxed">
+                  {paragraph}
+                </p>
               </motion.div>
             ))}
           </div>
+
         </div>
       </div>
     </section>
