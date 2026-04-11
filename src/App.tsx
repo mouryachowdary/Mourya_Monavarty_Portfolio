@@ -13,11 +13,9 @@ const App = () => {
   return (
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
-        {/* UI Providers (safe import) */}
         <Toaster />
         <Sonner />
 
-        {/* Routing */}
         <BrowserRouter>
           <Routes>
             <Route path="/" element={<Index />} />
