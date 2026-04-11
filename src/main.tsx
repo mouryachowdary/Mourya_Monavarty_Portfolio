@@ -1,10 +1,16 @@
 import { createRoot } from "react-dom/client";
-import { inject } from "@vercel/analytics";
-import { injectSpeedInsights } from "@vercel/speed-insights";
-import App from "./App.tsx";
+import App from "./App";
 import "./index.css";
 
-inject();
-injectSpeedInsights();
+// Render app immediately (prioritize UI)
+const rootElement = document.getElementById("root");
 
-createRoot(document.getElementById("root")!).render(<App />);
+if (rootElement) {
+  createRoot(rootElement).render(<App />);
+}
+
+// Load Vercel analytics AFTER render (non-blocking)
+import("@vercel/analytics").then(({ inject }) => inject());
+import("@vercel/speed-insights").then(({ injectSpeedInsights }) =>
+  injectSpeedInsights()
+);
