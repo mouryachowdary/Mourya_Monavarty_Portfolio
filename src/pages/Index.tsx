@@ -9,11 +9,8 @@ import ContactSection from "@/components/ContactSection";
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
-      {/* Above the fold */}
       <Navbar />
       <HeroSection />
-
-      {/* Main content */}
       <ExperienceSection />
       <ProjectsSection />
       <SkillsSection />
