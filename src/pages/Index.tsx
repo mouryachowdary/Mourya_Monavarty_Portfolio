@@ -1,21 +1,29 @@
+import { lazy, Suspense } from "react";
 import Navbar from "@/components/Navbar";
 import HeroSection from "@/components/HeroSection";
-import ExperienceSection from "@/components/ExperienceSection";
-import ProjectsSection from "@/components/ProjectsSection";
-import SkillsSection from "@/components/SkillsSection";
-import EducationSection from "@/components/EducationSection";
-import ContactSection from "@/components/ContactSection";
+
+// Lazy load BELOW-THE-FOLD sections
+const ExperienceSection = lazy(() => import("@/components/ExperienceSection"));
+const ProjectsSection = lazy(() => import("@/components/ProjectsSection"));
+const SkillsSection = lazy(() => import("@/components/SkillsSection"));
+const EducationSection = lazy(() => import("@/components/EducationSection"));
+const ContactSection = lazy(() => import("@/components/ContactSection"));
 
 const Index = () => {
   return (
     <div className="min-h-screen bg-background">
+      {/* Load instantly (important for LCP) */}
       <Navbar />
       <HeroSection />
-      <ExperienceSection />
-      <ProjectsSection />
-      <SkillsSection />
-      <EducationSection />
-      <ContactSection />
+
+      {/* Lazy load rest (performance boost) */}
+      <Suspense fallback={<div className="text-center mt-10">Loading...</div>}>
+        <ExperienceSection />
+        <ProjectsSection />
+        <SkillsSection />
+        <EducationSection />
+        <ContactSection />
+      </Suspense>
     </div>
   );
 };
