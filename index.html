@@ -6,27 +6,41 @@
 
   <title>Mourya Monavarty Portfolio</title>
 
-  <!-- ✅ Google Search Console Verification -->
+  <!-- ✅ Google Search Console -->
   <meta name="google-site-verification" content="-fs8CgNwtu1ABRUop7MTi-5Guchc1hsp6J2t12ib4PE"/>
-  <!-- ✅ SEO Meta Tags -->
+
+  <!-- ✅ SEO -->
   <meta name="description" content="Mourya Monavarty Portfolio - QA Engineer, Automation, Testing Projects" />
   <meta name="keywords" content="QA Engineer, Testing, Automation, Portfolio, Mourya" />
   <meta name="author" content="Mourya Monavarty" />
 
-  <!-- ✅ Open Graph (for LinkedIn, WhatsApp, etc.) -->
+  <!-- ✅ Open Graph -->
   <meta property="og:title" content="Mourya Monavarty Portfolio" />
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://mouryamonavarty.vercel.app/" />
   <meta property="og:image" content="https://mouryamonavarty.vercel.app/thumbnail.jpg" />
   <meta property="og:description" content="QA Engineer Portfolio showcasing projects, skills, and experience" />
 
-  <!-- ✅ Favicon (optional but recommended) -->
-  <link rel="icon" type="ico/png" href="/favicon.ico" />
+  <!-- ✅ FIXED Favicon -->
+  <link rel="icon" href="/favicon.ico" />
+
+  <!-- 🚀 PERFORMANCE: Preconnect to Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <!-- 🚀 Load Fonts Efficiently -->
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600&family=Space+Grotesk:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- 🚀 OPTIONAL: Preload your main hero image (VERY IMPORTANT) -->
+  <!-- Replace /hero.webp with your actual main image -->
+  <link rel="preload" as="image" href="/hero.webp" />
 
 </head>
 
 <body>
   <div id="root"></div>
+
+  <!-- 🚀 Script stays at bottom (good for performance) -->
   <script type="module" src="/src/main.tsx"></script>
 </body>
 </html>
