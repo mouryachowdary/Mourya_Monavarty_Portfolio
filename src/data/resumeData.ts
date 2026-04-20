@@ -172,7 +172,8 @@ export const skillGroups = [
     title: "AI & Automation",
     skills: [
       "Prompt Engineering",
-      "ChatGPT / GitHub Copilot",
+      "ChatGPT / GitHub Copilot / Codex",
+      "Cursor / Continue",
       "AI-Assisted Testing",
       "Test Case Generation Using AI",
       "Basic AI Concepts",
