@@ -177,6 +177,7 @@ export const skillGroups = [
       "Test Case Generation Using AI",
       "Basic AI Concepts",
     ],
+  },
   {
     title: "Databases",
     skills: ["MySQL", "Microsoft SQL Server"],
