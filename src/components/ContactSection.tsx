@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send } from "lucide-react";
 import { personalInfo } from "@/data/resumeData";
 
 const contactItems = [
@@ -31,7 +31,7 @@ const contactItems = [
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24">
+    <section id="contact" className="py-24 section-shell">
       <div className="container px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -44,7 +44,8 @@ const ContactSection = () => {
             &gt; contact.init()
           </p>
 
-          <h2 className="text-4xl font-bold font-display mb-6">
+          <h2 className="text-4xl font-bold font-display mb-6 flex items-center justify-center gap-3">
+            <Send className="w-8 h-8 text-primary icon-glow" />
             Get In Touch
           </h2>
 
@@ -71,7 +72,7 @@ const ContactSection = () => {
                     boxShadow: "0 0 25px hsl(174 72% 50% / 0.25)",
                   }}
                   whileTap={{ scale: 0.97 }}
-                  className="flex items-center justify-center gap-3 bg-card rounded-lg p-4 gradient-border text-foreground hover:text-primary transition-colors duration-300 cursor-pointer"
+                  className="flex items-center justify-center gap-3 bg-card rounded-lg p-4 gradient-border card-hover-glow text-foreground hover:text-primary transition-colors duration-300 cursor-pointer"
                 >
                   <motion.div
                     whileHover={{ rotate: [0, -15, 15, 0], scale: 1.2 }}

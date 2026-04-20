@@ -1,10 +1,32 @@
 import { motion } from "framer-motion";
-import { FolderGit2, Github, ExternalLink } from "lucide-react";
+import {
+  Activity,
+  Briefcase,
+  FolderGit2,
+  Github,
+  ExternalLink,
+  Rocket,
+  Stethoscope,
+} from "lucide-react";
 import { projects } from "@/data/resumeData";
+
+const getProjectIcon = (title: string) => {
+  const normalized = title.toLowerCase();
+  if (normalized.includes("automation")) {
+    return Activity;
+  }
+  if (normalized.includes("portfolio")) {
+    return Briefcase;
+  }
+  if (normalized.includes("medicare") || normalized.includes("appointment")) {
+    return Stethoscope;
+  }
+  return FolderGit2;
+};
 
 const ProjectsSection = () => {
   return (
-    <section id="projects" className="py-16 sm:py-20 lg:py-24">
+    <section id="projects" className="py-16 sm:py-20 lg:py-24 section-shell">
       <div className="container mx-auto px-4 sm:px-6">
 
         {/* Header */}
@@ -19,24 +41,27 @@ const ProjectsSection = () => {
             &gt; projects.showcase()
           </p>
 
-          <h2 className="text-3xl sm:text-4xl font-bold font-display">
+          <h2 className="text-3xl sm:text-4xl font-bold font-display flex items-center gap-3">
+            <Rocket className="w-8 h-8 text-primary icon-glow" />
             Featured Projects
           </h2>
         </motion.div>
 
         {/* GRID */}
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, i) => (
+          {projects.map((project, i) => {
+            const ProjectIcon = getProjectIcon(project.title);
+            return (
             <motion.div
               key={i}
               initial={{ opacity: 0, x: -40 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.15 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
               className="group bg-card rounded-lg p-6 gradient-border 
-                         hover:box-glow transition-shadow duration-300 flex flex-col"
+                         card-hover-glow flex flex-col"
             >
 
               {/* Icon */}
@@ -44,7 +69,7 @@ const ProjectsSection = () => {
                 <motion.div
                   whileHover={{
                     rotate: [0, -10, 10, 0],
-                    scale: 1.2,
+                    scale: 1.15,
                     filter: "drop-shadow(0 0 10px hsl(174 72% 50% / 0.8))",
                   }}
                   whileTap={{
@@ -52,10 +77,9 @@ const ProjectsSection = () => {
                     rotate: -10,
                     filter: "drop-shadow(0 0 12px hsl(174 72% 50% / 1))",
                   }}
-                  animate={{ y: [0, -2, 0] }}
-                  transition={{ duration: 0.5 }}
+                  transition={{ duration: 0.4 }}
                 >
-                  <FolderGit2 className="w-8 h-8 text-primary" />
+                  <ProjectIcon className="w-8 h-8 text-primary" />
                 </motion.div>
               </div>
 
@@ -150,7 +174,8 @@ const ProjectsSection = () => {
               </div>
 
             </motion.div>
-          ))}
+            );
+          })}
         </div>
 
       </div>

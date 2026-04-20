@@ -1,11 +1,12 @@
 import { motion } from "framer-motion";
+import { BriefcaseBusiness } from "lucide-react";
 import { experiences } from "@/data/resumeData";
 
 const ExperienceSection = () => {
   return (
     <section
       id="experience"
-      className="py-24 bg-secondary/30 print:py-2"
+      className="py-24 bg-secondary/30 print:py-2 section-shell"
     >
       <div className="container px-6">
 
@@ -21,7 +22,8 @@ const ExperienceSection = () => {
             &gt; career.history
           </p>
 
-          <h2 className="text-4xl font-bold font-display print:text-xl">
+          <h2 className="text-4xl font-bold font-display print:text-xl flex items-center gap-3">
+            <BriefcaseBusiness className="w-8 h-8 text-primary icon-glow print:hidden" />
             Professional Experience
           </h2>
         </motion.div>
@@ -35,9 +37,9 @@ const ExperienceSection = () => {
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: i * 0.2 }}
-              whileHover={{ y: -4 }}
+              whileHover={{ y: -3 }}
               whileTap={{ scale: 0.98 }}
-              className="relative bg-card rounded-lg p-6 print:p-4 gradient-border hover:box-glow transition-shadow duration-300"
+              className="relative bg-card rounded-lg p-6 print:p-4 gradient-border card-hover-glow"
             >
               <div className="flex flex-col md:flex-row md:items-start gap-4 print:gap-3">
 

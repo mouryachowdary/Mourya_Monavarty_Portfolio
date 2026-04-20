@@ -7,13 +7,16 @@ const HeroSection = () => {
   return (
     <section
       id="home"
-      className="relative min-h-screen print:min-h-0 flex items-center justify-center overflow-hidden print:py-4"
+      className="relative min-h-screen print:min-h-0 flex items-center justify-center overflow-hidden print:py-4 section-shell"
     >
       {/* Background */}
       <div className="absolute inset-0 print:hidden">
         <img
           src={heroBg}
           alt=""
+          loading="eager"
+          fetchPriority="high"
+          decoding="async"
           className="w-full h-full object-cover opacity-40"
         />
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
@@ -45,6 +48,10 @@ const HeroSection = () => {
               <img
                 src={profilePic}
                 alt={personalInfo.name}
+                loading="eager"
+                fetchPriority="high"
+                decoding="async"
+                sizes="(max-width: 768px) 160px, 208px"
                 className="w-full h-full object-cover object-top transition-transform duration-300"
               />
             </div>

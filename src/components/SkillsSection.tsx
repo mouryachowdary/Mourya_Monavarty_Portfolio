@@ -1,20 +1,31 @@
 import { motion } from "framer-motion";
-import { Server, Network, Shield, Code, Monitor, Settings, Database } from "lucide-react";
+import {
+  Code,
+  Database,
+  Network,
+  Server,
+  Settings,
+  Shield,
+  Monitor,
+  Wrench,
+} from "lucide-react";
+import type { LucideIcon } from "lucide-react";
 import { skillGroups } from "@/data/resumeData";
 
-const iconMap: Record<string, React.ElementType> = {
+const iconMap: Record<string, LucideIcon> = {
   "System Administration": Server,
   "Networking & Infrastructure": Network,
   "Security & ITSM": Shield,
   "Languages & Automation": Code,
   "OS & Platforms": Monitor,
   "Tools & Software": Settings,
+  "AI & Automation": Wrench,
   "Databases": Database,
 };
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 print:py-3 print:[break-before:page]">
+    <section id="skills" className="py-24 print:py-3 print:[break-before:page] section-shell">
       <div className="container px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -26,7 +37,8 @@ const SkillsSection = () => {
           <p className="font-mono text-primary text-sm tracking-widest uppercase mb-2 print:mb-1">
             &gt; skills.list()
           </p>
-          <h2 className="text-4xl font-bold font-display print:text-xl">
+          <h2 className="text-4xl font-bold font-display print:text-xl flex items-center gap-3">
+            <Code className="w-8 h-8 text-primary icon-glow print:hidden" />
             Technical Skills
           </h2>
         </motion.div>
@@ -42,11 +54,11 @@ const SkillsSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.1 }}
                 whileHover={{
-                  y: -8,
+                  y: -6,
                   boxShadow: "0 0 30px hsl(174 72% 50% / 0.25)",
                 }}
                 whileTap={{ scale: 0.98 }}
-                className="skills-card bg-card rounded-lg p-6 print:p-3 gradient-border transition-shadow duration-300 cursor-default group"
+                className="skills-card bg-card rounded-lg p-6 print:p-3 gradient-border card-hover-glow cursor-default group"
               >
                 <motion.div
                   className="skills-icon"

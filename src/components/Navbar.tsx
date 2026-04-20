@@ -1,7 +1,6 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
-import { generateResume } from "@/lib/generateResume";
 
 const links = [
   { label: "Home", href: "#home" },
@@ -16,9 +15,10 @@ const links = [
 const Navbar = () => {
   const [open, setOpen] = useState(false);
 
-  const handleClick = (link: typeof links[0], e: React.MouseEvent) => {
+  const handleClick = async (link: typeof links[0], e: React.MouseEvent) => {
     if (link.action === "resume") {
       e.preventDefault();
+      const { generateResume } = await import("@/lib/generateResume");
       generateResume();
     }
   };

@@ -4,7 +4,7 @@ import { education, howIWork } from "@/data/resumeData";
 
 const EducationSection = () => {
   return (
-    <section id="education" className="py-24 bg-secondary/30">
+    <section id="education" className="py-24 bg-secondary/30 section-shell">
       <div className="container px-6">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
@@ -17,7 +17,8 @@ const EducationSection = () => {
             &gt; education.fetch()
           </p>
 
-          <h2 className="text-4xl font-bold font-display">
+          <h2 className="text-4xl font-bold font-display flex items-center gap-3">
+            <GraduationCap className="w-8 h-8 text-primary icon-glow" />
             Education & How I Work
           </h2>
         </motion.div>
@@ -49,7 +50,7 @@ const EducationSection = () => {
                   boxShadow: "0 0 25px hsl(174 72% 50% / 0.2)",
                 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-card rounded-lg p-6 gradient-border transition-shadow duration-300 cursor-default"
+                className="bg-card rounded-lg p-6 gradient-border card-hover-glow cursor-default"
               >
                 <span className="font-mono text-xs text-primary tracking-wider">
                   {edu.period}
@@ -91,7 +92,7 @@ const EducationSection = () => {
                   boxShadow: "0 0 25px hsl(174 72% 50% / 0.2)",
                 }}
                 whileTap={{ scale: 0.97 }}
-                className="bg-card rounded-lg p-6 gradient-border transition-shadow duration-300 cursor-default"
+                className="bg-card rounded-lg p-6 gradient-border card-hover-glow cursor-default"
               >
                 <p className="text-foreground text-sm leading-relaxed">
                   {paragraph}
