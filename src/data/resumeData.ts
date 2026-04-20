@@ -110,6 +110,8 @@ export const skillGroups = [
       "Virtualization",
       "Remote Desktop Protocol",
       "Sysinternals",
+      "MS Intune",
+      "Vanta",
     ],
   },
   {
