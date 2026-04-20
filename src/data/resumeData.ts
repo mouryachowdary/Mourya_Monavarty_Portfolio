@@ -199,7 +199,7 @@ export const education = [
 ];
 
 export const howIWork = [
-  "I combine infrastructure expertise with automation testing to build reliable, scalable systems. My approach focuses on real-world scenarios, ensuring applications perform seamlessly under actual conditions.",
-  "I design maintainable automation frameworks (Playwright + TypeScript) with a strong emphasis on stability, reusability, and efficient execution. At the same time, I apply my infrastructure knowledge to ensure system performance, monitoring, and reliability are never compromised.",
-  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality and engineering efficiency.",
+  "I approach my work by first understanding the requirements across systems, applications, and infrastructure to ensure I have a clear direction. I focus on setting up and managing environments efficiently, including devices, configurations, and policies, while keeping security and compliance in mind.",
+  "I use a combination of manual testing and automation to validate functionality and identify issues early. Along with this, I leverage modern tools and AI assistance to improve productivity, generate test scenarios, and streamline workflows, allowing me to work smarter and deliver faster results.",
+  "I take ownership of identifying, troubleshooting, and resolving issues across systems, ensuring stability and reliability. I continuously look for ways to improve processes, enhance automation, and maintain high standards in performance, security, and overall system quality.",
 ];
