@@ -199,7 +199,7 @@ export const education = [
 ];
 
 export const howIWork = [
-  "I start by understanding requirements across systems and applications to ensure clarity. I manage configurations, devices, and policies while maintaining security and compliance.",
-  "I use both manual testing and automation to validate functionality and identify issues early. I also leverage AI tools to improve efficiency, generate test scenarios, and optimize workflows.",
-  "I take ownership of troubleshooting and resolving issues, and I continuously improve processes to ensure reliability, performance, and quality.",
+  "I combine infrastructure expertise with automation testing to build reliable, scalable systems. My approach focuses on real-world scenarios, ensuring applications perform seamlessly under actual conditions.",
+  "I design maintainable automation frameworks (Playwright + TypeScript) with a strong emphasis on stability, reusability, and efficient execution. At the same time, I apply my infrastructure knowledge to ensure system performance, monitoring, and reliability are never compromised.",
+  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality andengineering efficiency.",
 ];
