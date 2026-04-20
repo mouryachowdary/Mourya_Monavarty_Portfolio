@@ -169,6 +169,15 @@ export const skillGroups = [
     ],
   },
   {
+    title: "AI & Automation",
+    skills: [
+      "Prompt Engineering",
+      "ChatGPT / GitHub Copilot",
+      "AI-Assisted Testing",
+      "Test Case Generation Using AI",
+      "Basic AI Concepts",
+    ],
+  {
     title: "Databases",
     skills: ["MySQL", "Microsoft SQL Server"],
   },
