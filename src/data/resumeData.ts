@@ -199,7 +199,7 @@ export const education = [
 ];
 
 export const howIWork = [
-  "I approach my work by first understanding the requirements across systems, applications, and infrastructure to ensure I have a clear direction. I focus on setting up and managing environments efficiently, including devices, configurations, and policies, while keeping security and compliance in mind.",
-  "I use a combination of manual testing and automation to validate functionality and identify issues early. Along with this, I leverage modern tools and AI assistance to improve productivity, generate test scenarios, and streamline workflows, allowing me to work smarter and deliver faster results.",
-  "I take ownership of identifying, troubleshooting, and resolving issues across systems, ensuring stability and reliability. I continuously look for ways to improve processes, enhance automation, and maintain high standards in performance, security, and overall system quality.",
+  "I start by understanding requirements across systems and applications to ensure clarity. I manage configurations, devices, and policies while maintaining security and compliance.",
+  "I use both manual testing and automation to validate functionality and identify issues early. I also leverage AI tools to improve efficiency, generate test scenarios, and optimize workflows.",
+  "I take ownership of troubleshooting and resolving issues, and I continuously improve processes to ensure reliability, performance, and quality.",
 ];
