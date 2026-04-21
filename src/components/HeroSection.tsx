@@ -1,9 +1,24 @@
+import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import profilePic from "@/assets/profile.jpg";
 import { personalInfo } from "@/data/resumeData";
 
 const HeroSection = () => {
+  const [showBackgroundImage, setShowBackgroundImage] = useState(false);
+
+  useEffect(() => {
+    const schedule = () => setShowBackgroundImage(true);
+
+    if ("requestIdleCallback" in window) {
+      const id = window.requestIdleCallback(schedule, { timeout: 2000 });
+      return () => window.cancelIdleCallback(id);
+    }
+
+    const timeoutId = window.setTimeout(schedule, 1200);
+    return () => window.clearTimeout(timeoutId);
+  }, []);
+
   return (
     <section
       id="home"
@@ -11,14 +26,16 @@ const HeroSection = () => {
     >
       {/* Background */}
       <div className="absolute inset-0 print:hidden">
-        <img
-          src={heroBg}
-          alt=""
-          loading="eager"
-          fetchPriority="high"
-          decoding="async"
-          className="w-full h-full object-cover opacity-40"
-        />
+        {showBackgroundImage ? (
+          <img
+            src={heroBg}
+            alt=""
+            loading="lazy"
+            fetchPriority="low"
+            decoding="async"
+            className="w-full h-full object-cover opacity-40"
+          />
+        ) : null}
         <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
       </div>
 

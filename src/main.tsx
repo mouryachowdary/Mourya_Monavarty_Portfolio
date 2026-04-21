@@ -9,10 +9,6 @@ const setupVercelTelemetry = () => {
 	]);
 };
 
-if ("requestIdleCallback" in window) {
-	window.requestIdleCallback(setupVercelTelemetry, { timeout: 2000 });
-} else {
-	window.setTimeout(setupVercelTelemetry, 1200);
-}
+setupVercelTelemetry();
 
 createRoot(document.getElementById("root")!).render(<App />);
