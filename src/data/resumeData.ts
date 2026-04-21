@@ -181,7 +181,7 @@ export const skillGroups = [
   },
   {
     title: "Databases",
-    skills: ["MySQL", "Microsoft SQL Server"],
+    skills: ["MySQL", "Microsoft SQL Server", "PostgreSQL"],
   },
 ];
 
