@@ -1,12 +1,18 @@
 export const personalInfo = {
   name: "Mourya Monavarty",
-  title: "Infrastructure Management Engineer | Aspiring SDET",
+  title: "Infrastructure Engineer | Automation Test Engineer",
   summary:
-    "Experienced Infrastructure Management Engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
+    "Infrastructure and IT operations engineer with 5+ years of hands-on experience supporting enterprise Windows environments, network operations, endpoint management, and service reliability. I have managed 50+ servers, 500+ endpoints, 100+ monitored systems, and production support workflows with 99.5% availability targets. Alongside infrastructure work, I build automation using Playwright, TypeScript, and API testing practices to improve product quality, release confidence, and operational efficiency.",
+  highlights: [
+    "5+ years in enterprise IT operations",
+    "50+ servers and 500+ endpoints managed",
+    "Playwright, TypeScript, API testing",
+  ],
   email: "mouryachowdary19aps@gmail.com",
   phone: "+91 8919517382",
   location: "Visakhapatnam, Andhra Pradesh, India",
   linkedin: "https://www.linkedin.com/in/mourya-monavarty-0b3460166/",
+  github: "https://github.com/mouryachowdary",
   portfolio: "https://mouryamonavarty.vercel.app/",
 };
 
@@ -72,7 +78,8 @@ export const projects = [
   {
     title: "Medicare Booking Automation",
     description: [
-      "End-to-end automation using Playwright for booking workflows and validation."
+      "Built an end-to-end Playwright automation suite for appointment booking workflows, validations, and regression coverage.",
+      "Focused on reliable selectors, reusable page-object patterns, and business-critical path verification to reduce manual test effort."
     ],
     tags: ["Playwright", "TypeScript", "E2E"],
     github: "https://github.com/mouryachowdary/MedSchedule-Project-Playwright.git"
@@ -80,7 +87,8 @@ export const projects = [
   {
     title: "Medicare Appointment booking App",
     description: [
-      "UI-based healthcare booking simulator."
+      "Developed a healthcare booking application that simulates appointment scheduling, patient flow, and form-driven booking journeys.",
+      "Used it as a practical frontend project to model user behavior, booking states, and testable interaction flows."
     ],
     tags: ["Healthcare", "Appointment Booking", "Patient Scheduling", "Booking System", "User Flow"],
     live: "https://medicare-appointmentbooking-app.vercel.app/",
@@ -89,9 +97,10 @@ export const projects = [
   {
     title: "Portfolio",
     description: [
-      "Developed a responsive portfolio website using React, TypeScript, and Tailwind CSS, integrated with Framer Motion for seamless animations and interactions, to effectively showcase work experiences, projects and technical skills."
+      "Built a performance-focused portfolio with React, TypeScript, Tailwind CSS, and Framer Motion to present quantified experience, projects, and technical depth.",
+      "Optimized loading behavior, animation accessibility, and global delivery to improve first-load speed and presentation quality."
       ],
-    tags: [" React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Develpoment"],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Development"],
     live: "https://mouryamonavarty.vercel.app/",
     github: "https://github.com/mouryachowdary/Mourya_Monavarty_Portfolio.git"
   }
@@ -201,5 +210,5 @@ export const education = [
 export const howIWork = [
   "I combine infrastructure expertise with automation testing to build reliable, scalable systems. My approach focuses on real-world scenarios, ensuring applications perform seamlessly under actual conditions.",
   "I design maintainable automation frameworks (Playwright + TypeScript) with a strong emphasis on stability, reusability, and efficient execution. At the same time, I apply my infrastructure knowledge to ensure system performance, monitoring, and reliability are never compromised.",
-  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality andengineering efficiency.",
+  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality and engineering efficiency.",
 ];

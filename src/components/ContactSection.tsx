@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, Send, Github } from "lucide-react";
 import { personalInfo } from "@/data/resumeData";
 
 const contactItems = [
@@ -27,6 +27,12 @@ const contactItems = [
     href: personalInfo.linkedin,
     isLink: true,
   },
+  {
+    icon: Github,
+    label: "GitHub Profile",
+    href: personalInfo.github,
+    isLink: true,
+  },
 ];
 
 const ContactSection = () => {
@@ -50,7 +56,7 @@ const ContactSection = () => {
           </h2>
 
           <p className="text-muted-foreground mb-10">
-            I'm always open to new opportunities in infrastructure, networking, IT operations, and automation testing.
+            Open to infrastructure, IT operations, and automation testing opportunities where measurable reliability, support quality, and test coverage matter.
           </p>
 
           <div className="space-y-4">

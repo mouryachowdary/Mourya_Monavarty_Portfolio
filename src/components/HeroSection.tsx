@@ -137,6 +137,23 @@ const HeroSection = () => {
             >
               {personalInfo.summary}
             </motion.p>
+
+            <motion.div
+              initial={{ opacity: 0, y: 16 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.95, duration: 0.5 }}
+              className="flex flex-wrap gap-3 mb-10 print:hidden"
+            >
+              {personalInfo.highlights.map((highlight) => (
+                <span
+                  key={highlight}
+                  className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-sm font-mono text-primary"
+                >
+                  {highlight}
+                </span>
+              ))}
+            </motion.div>
           </div>
         </motion.div>
       </div>
