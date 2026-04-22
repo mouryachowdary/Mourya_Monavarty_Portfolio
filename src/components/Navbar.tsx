@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
  
@@ -16,6 +16,14 @@ const links = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const [hasScrolled, setHasScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => setHasScrolled(window.scrollY > 8);
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
 
   const handleClick = async (link: typeof links[0], e: React.MouseEvent) => {
     if (link.action === "resume") {
@@ -26,7 +34,19 @@ const Navbar = () => {
   };
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/92 border-b border-border">
+    <nav
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+        hasScrolled
+          ? "bg-background/92 backdrop-blur-md"
+          : "bg-background/65 backdrop-blur-sm"
+      }`}
+    >
+      <div
+        className={`pointer-events-none absolute inset-x-0 bottom-0 h-px bg-gradient-to-r from-transparent via-primary/35 to-transparent transition-opacity duration-300 ${
+          hasScrolled ? "opacity-100" : "opacity-0"
+        }`}
+        aria-hidden="true"
+      />
       <div className="container flex items-center justify-between h-16 px-6">
 
         <motion.a
