@@ -1,22 +1,51 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
 import heroBg from "@/assets/hero-bg.jpg";
 import profilePic from "@/assets/profile.jpg";
 import { personalInfo } from "@/data/resumeData";
+
+const tagContainer: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.08,
+      delayChildren: 0.05,
+    },
+  },
+};
+
+const tagItem: Variants = {
+  hidden: { opacity: 0, y: 12, scale: 0.94 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    scale: 1,
+    transition: {
+      type: "spring" as const,
+      stiffness: 260,
+      damping: 18,
+    },
+  },
+};
 
 const HeroSection = () => {
   const [showBackgroundImage, setShowBackgroundImage] = useState(false);
 
   useEffect(() => {
     const schedule = () => setShowBackgroundImage(true);
+    const fallbackToTimeout = () => {
+      const timeoutId = window.setTimeout(schedule, 1200);
+      return () => window.clearTimeout(timeoutId);
+    };
 
     if ("requestIdleCallback" in window) {
       const id = window.requestIdleCallback(schedule, { timeout: 2000 });
       return () => window.cancelIdleCallback(id);
     }
 
-    const timeoutId = window.setTimeout(schedule, 1200);
-    return () => window.clearTimeout(timeoutId);
+    return fallbackToTimeout();
   }, []);
 
   return (
@@ -139,19 +168,35 @@ const HeroSection = () => {
             </motion.p>
 
             <motion.div
-              initial={{ opacity: 0, y: 16 }}
-              whileInView={{ opacity: 1, y: 0 }}
+              variants={tagContainer}
+              initial="hidden"
+              whileInView="visible"
               viewport={{ once: true }}
-              transition={{ delay: 0.95, duration: 0.5 }}
               className="flex flex-wrap gap-3 mb-10 print:hidden"
             >
-              {personalInfo.highlights.map((highlight) => (
-                <span
+              {personalInfo.highlights.map((highlight, index) => (
+                <motion.span
                   key={highlight}
+                  variants={tagItem}
+                  animate={{ y: [0, index % 2 === 0 ? -3 : 3, 0] }}
+                  transition={{
+                    y: {
+                      duration: 3 + index * 0.35,
+                      repeat: Infinity,
+                      ease: "easeInOut",
+                    },
+                  }}
+                  whileHover={{
+                    y: -4,
+                    scale: 1.06,
+                    boxShadow: "0 0 24px hsl(174 72% 50% / 0.32)",
+                    borderColor: "hsl(174 72% 50% / 0.55)",
+                  }}
+                  whileTap={{ scale: 0.97 }}
                   className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-sm font-mono text-primary"
                 >
                   {highlight}
-                </span>
+                </motion.span>
               ))}
             </motion.div>
           </div>
