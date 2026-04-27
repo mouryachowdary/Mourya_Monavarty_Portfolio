@@ -18,6 +18,22 @@ export const personalInfo = {
 export const experiences = [
   {
     number: "01",
+    title: "IT & Systems Admin",
+    company: "Thuro, Sails Software Inc",
+    Location: "Visakhapatnam",
+    period: "Apr 2026 - present",
+    tasks: [
+      "Managing IT systems administration, infrastructure operations, and day-to-day technical support activities",
+    ],
+    tags: [
+      "System Administration",
+      "IT Operations",
+      "Infrastructure",
+      "Technical Support",
+    ],
+  },
+  {
+    number: "02",
     title: "Infrastructure Management Engineer",
     company: "CSI WEB, Sails Software Inc",
     Location: "Visakhapatnam",
@@ -46,7 +62,7 @@ export const experiences = [
     ],
   },
   {
-    number: "02",
+    number: "03",
     title: "IT & Network Engineer",
     company: "Sails Software Inc",
     Location: "Visakhapatnam",
