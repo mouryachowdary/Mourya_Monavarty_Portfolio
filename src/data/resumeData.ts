@@ -1,8 +1,8 @@
 export const personalInfo = {
   name: "Mourya Monavarty",
-  title: "Infrastructure Management Engineer | Aspiring SDET",
+  title: "IT & Systems Admin | Aspiring SDET",
   summary:
-    "Experienced Infrastructure Management Engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
+    "Experienced IT & Systems support engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
   highlights: [
     "5+ years in enterprise IT operations",
     "50+ servers and 500+ endpoints managed",
@@ -18,10 +18,10 @@ export const personalInfo = {
 export const experiences = [
   {
     number: "01",
-    title: "Infrastructure Management Engineer",
+    title: "IT & Systems Support Engineer",
     company: "CSI WEB, Sails Software Inc",
     Location: "Visakhapatnam",
-    period: "AUG 2022 - PRESENT",
+    period: "AUG 2022 - Apr 2026",
     tasks: [
       "Administered and optimized 50+ Windows Server 2012–2022 instances across production and staging environments",
       "Deployed OS images, software packages, and compliance baselines to 500+ endpoints using SCCM",
@@ -47,7 +47,7 @@ export const experiences = [
   },
   {
     number: "02",
-    title: "IT & Network Engineer",
+    title: "IT & Network Support Associate",
     company: "Sails Software Inc",
     Location: "Visakhapatnam",
     period: "APR 2020 - JUL 2022",
