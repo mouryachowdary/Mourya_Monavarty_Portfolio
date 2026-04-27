@@ -1,8 +1,8 @@
 export const personalInfo = {
   name: "Mourya Monavarty",
-  title: "Infrastructure Management Engineer | Aspiring SDET",
+  title: "IT & Systems Admin | Aspiring SDET",
   summary:
-    "Experienced Infrastructure Management Engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
+    "Experienced IT & Systems support engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
   highlights: [
     "5+ years in enterprise IT operations",
     "50+ servers and 500+ endpoints managed",
@@ -37,9 +37,9 @@ export const experiences = [
     title: "IT & Systems Support Engineer",
     company: "CSI WEB, Sails Software Inc",
     Location: "Visakhapatnam",
-    period: "AUG 2022 - PRESENT",
+    period: "AUG 2022 - Apr 2026",
     tasks: [
-      "Administered and optimized 50+ Windows Server 2012–2022 instances across production and staging environments",
+      "Administered and optimized 50+ Windows Server 2012-2022 instances across production and staging environments",
       "Deployed OS images, software packages, and compliance baselines to 500+ endpoints using SCCM",
       "Implemented SCOM monitoring for 100+ servers, configuring alerts and dashboards for proactive issue resolution",
       "Managed monthly security patch cycles using Ivanti and WSUS, maintaining 98% patch compliance",
@@ -63,7 +63,7 @@ export const experiences = [
   },
   {
     number: "03",
-    title: "IT & Network Engineer",
+    title: "IT & Network Support Associate",
     company: "Sails Software Inc",
     Location: "Visakhapatnam",
     period: "APR 2020 - JUL 2022",
@@ -170,8 +170,8 @@ export const skillGroups = [
   {
     title: "OS & Platforms",
     skills: [
-      "Windows XP–11",
-      "Windows Server (2012 R2–2022)",
+      "Windows XP-11",
+      "Windows Server (2012 R2-2022)",
       "Linux",
       "MacOS",
       "Microsoft Azure",
@@ -222,5 +222,5 @@ export const education = [
 export const howIWork = [
   "I combine infrastructure expertise with automation testing to build reliable, scalable systems. My approach focuses on real-world scenarios, ensuring applications perform seamlessly under actual conditions.",
   "I design maintainable automation frameworks (Playwright + TypeScript) with a strong emphasis on stability, reusability, and efficient execution. At the same time, I apply my infrastructure knowledge to ensure system performance, monitoring, and reliability are never compromised.",
-  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality andengineering efficiency.",
+  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality and engineering efficiency.",
 ];

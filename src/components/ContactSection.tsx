@@ -18,7 +18,7 @@ const contactItems = [
   {
     icon: MapPin,
     label: personalInfo.location,
-    href: "https://www.google.com/maps/dir/17.8061312,83.3880064/Visakhapatnam",
+    href: "https://maps.app.goo.gl/Y4YrRbRWZad8oYxn7",
     isLink: true,
   },
   {
