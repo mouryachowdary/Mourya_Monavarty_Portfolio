@@ -34,7 +34,7 @@ export const experiences = [
   },
   {
     number: "02",
-    title: "Infrastructure Management Engineer",
+    title: "IT & Systems Support Engineer",
     company: "CSI WEB, Sails Software Inc",
     Location: "Visakhapatnam",
     period: "AUG 2022 - PRESENT",
