@@ -23,12 +23,12 @@ export const experiences = [
     Location: "Visakhapatnam",
     period: "Apr 2026 - present",
     tasks: [
-      "Administering end-to-end IT systems operations including user provisioning, access management, and infrastructure maintenance",
-      "Driving SOC 2 compliance initiatives by implementing security controls, evidence collection, and audit readiness across systems",
-      "Building and maintaining compliance dashboards and automated reporting pipelines using Vanta to track SOC 2 control status",
-      "Managing endpoint lifecycle, policy enforcement, and device compliance for Windows and macOS devices via Microsoft Intune",
-      "Providing dedicated technical support to on-shore teams, resolving escalated issues and ensuring minimal disruption to business operations",
-      "Leading Problem and Incident Management processes following ITIL best practices, driving root cause analysis and permanent resolutions",
+      "Administering IT systems operations including user provisioning, access management, and infrastructure maintenance",
+      "Driving SOC 2 compliance by implementing security controls, evidence collection, and audit readiness",
+      "Building compliance dashboards and reporting pipelines using Vanta to track SOC 2 control status",
+      "Managing endpoint lifecycle, policy enforcement, and device compliance via Microsoft Intune",
+      "Providing technical support to on-shore teams, resolving escalated issues to minimize business disruption",
+      "Leading Problem and Incident Management following ITIL best practices and driving root cause analysis",
     ],
     tags: [
       "System Administration",
