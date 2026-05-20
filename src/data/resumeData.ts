@@ -4,7 +4,7 @@ export const personalInfo = {
   summary:
     "Experienced IT & Systems support engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
   highlights: [
-    "5+ years in enterprise IT operations",
+    "6+ years in enterprise IT operations",
     "50+ servers and 500+ endpoints managed",
     "Playwright, TypeScript, API testing",
   ],
