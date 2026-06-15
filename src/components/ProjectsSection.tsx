@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Activity,
@@ -5,8 +6,10 @@ import {
   FolderGit2,
   Github,
   ExternalLink,
+  Image,
   Rocket,
   Stethoscope,
+  X,
 } from "lucide-react";
 import { projects } from "@/data/resumeData";
 
@@ -25,6 +28,8 @@ const getProjectIcon = (title: string) => {
 };
 
 const ProjectsSection = () => {
+  const [previewImage, setPreviewImage] = useState<string | null>(null);
+
   return (
     <section id="projects" className="py-16 sm:py-20 lg:py-24 section-shell">
       <div className="container mx-auto px-4 sm:px-6">
@@ -128,8 +133,23 @@ const ProjectsSection = () => {
                 ))}
               </div>
 
+              {project.features?.length ? (
+                <div className="mb-6 text-sm text-muted-foreground space-y-2">
+                  <p className="text-xs uppercase tracking-[0.35em] text-primary/70 mb-2">
+                    Features
+                  </p>
+                  <ul className="list-disc list-inside space-y-1">
+                    {project.features.map((feature, idx) => (
+                      <li key={idx} className="leading-relaxed">
+                        {feature}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ) : null}
+
               {/* 🔥 LINKS SECTION */}
-              <div className="flex gap-3 mt-auto">
+              <div className="flex flex-wrap gap-3 mt-auto">
 
                 {/* GitHub */}
                 {project.github && (
@@ -171,6 +191,24 @@ const ProjectsSection = () => {
                   </motion.a>
                 )}
 
+                {project.previewImage && (
+                  <motion.button
+                    type="button"
+                    onClick={() => setPreviewImage(project.previewImage)}
+                    whileHover={{
+                      scale: 1.05,
+                      boxShadow: "0 0 12px hsl(174 72% 50% / 0.6)",
+                    }}
+                    whileTap={{ scale: 0.95 }}
+                    className="flex items-center gap-2 px-4 py-2 text-sm font-mono 
+                               border border-primary/30 rounded-md text-primary 
+                               hover:bg-primary/10 transition"
+                  >
+                    <Image className="w-4 h-4" />
+                    Preview
+                  </motion.button>
+                )}
+
               </div>
 
             </motion.div>
@@ -179,6 +217,35 @@ const ProjectsSection = () => {
         </div>
 
       </div>
+
+      {previewImage && (
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          className="fixed inset-0 z-50 flex items-center justify-center bg-slate-950/80 p-4"
+        >
+          <motion.div
+            initial={{ scale: 0.95, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.2 }}
+            className="relative w-full max-w-4xl overflow-hidden rounded-3xl border border-primary/20 bg-slate-950 shadow-2xl"
+          >
+            <button
+              type="button"
+              onClick={() => setPreviewImage(null)}
+              className="absolute right-4 top-4 z-10 inline-flex h-10 w-10 items-center justify-center rounded-full border border-primary/30 bg-slate-950/95 text-primary transition hover:bg-slate-900"
+            >
+              <X className="w-5 h-5" />
+            </button>
+            <img
+              src={previewImage}
+              alt="Project preview"
+              className="w-full rounded-b-3xl object-contain"
+            />
+          </motion.div>
+        </motion.div>
+      )}
     </section>
   );
 };
