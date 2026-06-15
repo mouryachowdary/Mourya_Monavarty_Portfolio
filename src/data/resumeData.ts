@@ -145,7 +145,7 @@ export const projects = [
       "Interactive preview button that displays the extension mockup image."
     ],
     tags: ["Chrome Extension", "UI Theme", "Web Extension", "JavaScript", "CSS", "Browser UX"],
-    previewImage: "/thumbnail.jpg",
+    previewImage: "/aurora-preview.svg",
     github: "https://github.com/mouryachowdary/Aurora-Extension-UI-for-Chrome.git"
   }
 ];
