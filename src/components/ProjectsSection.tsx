@@ -133,20 +133,6 @@ const ProjectsSection = () => {
                 ))}
               </div>
 
-              {project.features?.length ? (
-                <div className="mb-6 text-sm text-muted-foreground space-y-2">
-                  <p className="text-xs uppercase tracking-[0.35em] text-primary/70 mb-2">
-                    Features
-                  </p>
-                  <ul className="list-disc list-inside space-y-1">
-                    {project.features.map((feature, idx) => (
-                      <li key={idx} className="leading-relaxed">
-                        {feature}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ) : null}
 
               {/* 🔥 LINKS SECTION */}
               <div className="flex flex-wrap gap-3 mt-auto">
