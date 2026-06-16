@@ -140,7 +140,7 @@ export const projects = [
       "Designed a Chrome browser extension that transforms the browsing experience with a vibrant Aurora-inspired UI theme, with Live Wallpaper and GIF/Image Support."
     ],
     tags: ["Chrome Extension", "UI Theme", "Web Extension", "JavaScript", "CSS", "Browser UX", "Live Wallpaper Support", "GIF/Image Support"],
-    previewImage: "/aurora-preview.svg",
+    previewImage: "/aurora-preview.png",
     github: "https://github.com/mouryachowdary/Aurora-Extension-UI-for-Chrome.git"
   }
 ];
