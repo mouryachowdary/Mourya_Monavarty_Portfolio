@@ -20,75 +20,87 @@ const iconMap: Record<string, LucideIcon> = {
   "OS & Platforms": Monitor,
   "Tools & Software": Settings,
   "AI & Automation": Wrench,
-  "Databases": Database,
+  Databases: Database,
 };
+
+const coreStack = ["Microsoft 365", "Intune", "Windows Server", "PowerShell", "Playwright", "TypeScript", "API Testing", "Azure"];
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="py-24 print:py-3 print:[break-before:page] section-shell">
-      <div className="container px-6">
+    <section id="skills" className="section-shell py-20 sm:py-24 lg:py-28 print:py-3 print:[break-before:page]">
+      <div className="container mx-auto px-5 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="mb-16 print:mb-3"
+          className="mb-8 flex flex-col justify-between gap-5 sm:mb-10 sm:flex-row sm:items-end print:mb-3"
         >
-          <p className="font-mono text-primary text-sm tracking-widest uppercase mb-2 print:mb-1">
-            &gt; skills.list()
+          <div>
+            <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm print:mb-1">
+              Capability map / toolbelt
+            </p>
+            <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground sm:text-5xl print:text-xl">
+              <span className="h-10 w-1 rounded-full bg-primary shadow-[0_0_18px_hsl(174_72%_50%_/_0.6)] print:hidden" />
+              Technical Skills
+            </h2>
+          </div>
+          <p className="max-w-sm text-sm leading-6 text-muted-foreground sm:text-right">
+            A practical stack spanning infrastructure, security, automation, and application quality.
           </p>
-          <h2 className="text-4xl font-bold font-display print:text-xl flex items-center gap-3">
-            <Code className="w-8 h-8 text-primary icon-glow print:hidden" />
-            Technical Skills
-          </h2>
         </motion.div>
 
-        <div className="skills-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 print:grid-cols-2 print:gap-2">
+        <motion.div
+          initial={{ opacity: 0, y: 18 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="mb-8 rounded-2xl border border-primary/20 bg-primary/[0.05] p-5 sm:p-6 print:hidden"
+        >
+          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+            <div>
+              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Core stack</p>
+              <p className="mt-1 text-sm text-muted-foreground">The tools I reach for most often.</p>
+            </div>
+            <div className="flex flex-wrap gap-2 sm:justify-end">
+              {coreStack.map((skill) => (
+                <span key={skill} className="rounded-full border border-primary/20 bg-background/50 px-3 py-1.5 font-mono text-xs text-foreground">
+                  {skill}
+                </span>
+              ))}
+            </div>
+          </div>
+        </motion.div>
+
+        <div className="skills-grid grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 print:grid-cols-2 print:gap-2">
           {skillGroups.map((group, i) => {
             const Icon = iconMap[group.title] || Server;
             return (
               <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 40 }}
+                key={group.title}
+                initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{
-                  y: -6,
-                  boxShadow: "0 0 30px hsl(174 72% 50% / 0.25)",
-                }}
-                whileTap={{ scale: 0.98 }}
-                className="skills-card bg-card rounded-lg p-6 print:p-3 gradient-border card-hover-glow cursor-default group"
+                transition={{ duration: 0.5, delay: i * 0.06 }}
+                whileHover={{ y: -4 }}
+                className="skills-card group rounded-2xl border border-border/80 bg-card/65 p-5 transition-colors hover:border-primary/35 print:rounded-lg print:p-3"
               >
-                <motion.div
-                  className="skills-icon"
-                  whileHover={{ rotate: [0, -10, 10, 0], scale: 1.2 }}
-                  whileTap={{ scale: 1.15 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Icon className="w-8 h-8 text-primary mb-4 print:mb-2 transition-all duration-300 group-hover:drop-shadow-[0_0_8px_hsl(174,72%,50%,0.6)]" />
-                </motion.div>
+                <div className="mb-5 flex items-start justify-between print:mb-2">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/[0.07] print:h-7 print:w-7">
+                    <Icon className="skills-icon h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110 print:h-4 print:w-4" />
+                  </div>
+                  <span className="font-mono text-[10px] text-muted-foreground">0{i + 1}</span>
+                </div>
 
-                <h3 className="text-lg font-bold font-display mb-4 print:mb-2 print:text-sm text-foreground">
+                <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground print:mb-2 print:text-sm">
                   {group.title}
                 </h3>
 
                 <ul className="space-y-2 print:space-y-1">
                   {group.skills.map((skill) => (
-                    <motion.li
-                      key={skill}
-                      className="text-sm print:text-[11px] text-muted-foreground flex items-center gap-2"
-                      whileHover={{ x: 4, color: "hsl(200, 20%, 90%)" }}
-                      whileTap={{ x: 4 }}
-                      transition={{ duration: 0.15 }}
-                    >
-                      <motion.span
-                        className="w-1.5 h-1.5 bg-primary rounded-full"
-                        whileHover={{ scale: 2 }}
-                        whileTap={{ scale: 2 }}
-                      />
+                    <li key={skill} className="flex items-center gap-2 text-sm text-muted-foreground print:text-[11px]">
+                      <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />
                       {skill}
-                    </motion.li>
+                    </li>
                   ))}
                 </ul>
               </motion.div>

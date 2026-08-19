@@ -1,96 +1,73 @@
 import { motion } from "framer-motion";
-import { Mail, Phone, MapPin, Linkedin, Send } from "lucide-react";
+import { Mail, Phone, MapPin, Linkedin, ArrowUpRight } from "lucide-react";
 import { personalInfo } from "@/data/resumeData";
 
 const contactItems = [
-  {
-    icon: Mail,
-    label: personalInfo.email,
-    href: `mailto:${personalInfo.email}`,
-    isLink: true,
-  },
-  {
-    icon: Phone,
-    label: personalInfo.phone,
-    href: `tel:${personalInfo.phone}`,
-    isLink: true,
-  },
-  {
-    icon: MapPin,
-    label: personalInfo.location,
-    href: "https://maps.app.goo.gl/Y4YrRbRWZad8oYxn7",
-    isLink: true,
-  },
-  {
-    icon: Linkedin,
-    label: "LinkedIn Profile",
-    href: personalInfo.linkedin,
-    isLink: true,
-  },
+  { icon: Mail, label: personalInfo.email, href: `mailto:${personalInfo.email}` },
+  { icon: Phone, label: personalInfo.phone, href: `tel:${personalInfo.phone}` },
+  { icon: MapPin, label: personalInfo.location, href: "https://maps.app.goo.gl/Y4YrRbRWZad8oYxn7" },
+  { icon: Linkedin, label: "LinkedIn Profile", href: personalInfo.linkedin },
 ];
 
 const ContactSection = () => {
   return (
-    <section id="contact" className="py-24 section-shell">
-      <div className="container px-6">
+    <section id="contact" className="section-shell border-t border-border/70 py-20 sm:py-24 lg:py-28">
+      <div className="container mx-auto px-5 sm:px-6">
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 24 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, amount: 0.2 }}
           transition={{ duration: 0.6 }}
-          className="max-w-xl mx-auto text-center"
+          className="relative overflow-hidden rounded-3xl border border-primary/20 bg-primary/[0.05] p-6 sm:p-10 lg:p-14"
         >
-          <p className="font-mono text-primary text-sm tracking-widest uppercase mb-2">
-            &gt; contact.init()
-          </p>
+          <div className="pointer-events-none absolute -right-20 -top-20 h-64 w-64 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+          <div className="pointer-events-none absolute bottom-0 left-0 h-px w-2/3 bg-gradient-to-r from-primary/60 to-transparent" aria-hidden="true" />
 
-          <h2 className="text-4xl font-bold font-display mb-6 flex items-center justify-center gap-3">
-            <Send className="w-8 h-8 text-primary icon-glow" />
-            Get In Touch
-          </h2>
+          <div className="relative grid gap-10 lg:grid-cols-[0.9fr_1.1fr] lg:items-center lg:gap-16">
+            <div>
+              <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm">
+                Next conversation / contact.init()
+              </p>
+              <h2 className="text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
+                Have a reliability or automation challenge?
+              </h2>
+              <p className="mt-5 max-w-xl text-base leading-7 text-muted-foreground">
+                I&apos;m open to opportunities in infrastructure, networking, IT operations, and test automation. Let&apos;s talk about the systems you&apos;re building.
+              </p>
+              <a
+                href={`mailto:${personalInfo.email}`}
+                className="mt-7 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_24px_hsl(174_72%_50%_/_0.24)] transition hover:-translate-y-1 hover:shadow-[0_0_34px_hsl(174_72%_50%_/_0.4)]"
+              >
+                Start a conversation
+                <ArrowUpRight className="h-4 w-4" />
+              </a>
+            </div>
 
-          <p className="text-muted-foreground mb-10">
-            I'm always open to new opportunities in infrastructure, networking, IT operations, and automation testing.
-          </p>
-
-          <div className="space-y-4">
-            {contactItems.map((item, i) => {
-              const Wrapper = item.isLink ? motion.a : motion.div;
-
-              return (
-                <Wrapper
-                  key={i}
-                  {...(item.isLink
-                    ? { href: item.href, target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
+            <div className="grid gap-3 sm:grid-cols-2">
+              {contactItems.map(({ icon: Icon, label, href }, i) => (
+                <motion.a
+                  key={label}
+                  href={href}
+                  target={href.startsWith("mailto:") || href.startsWith("tel:") ? undefined : "_blank"}
+                  rel={href.startsWith("mailto:") || href.startsWith("tel:") ? undefined : "noopener noreferrer"}
                   initial={{ opacity: 0, y: 15 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  whileHover={{
-                    y: -3,
-                    boxShadow: "0 0 25px hsl(174 72% 50% / 0.25)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  className="flex items-center justify-center gap-3 bg-card rounded-lg p-4 gradient-border card-hover-glow text-foreground hover:text-primary transition-colors duration-300 cursor-pointer"
+                  transition={{ delay: i * 0.08 }}
+                  whileHover={{ y: -3 }}
+                  className="group flex min-h-24 flex-col justify-between rounded-2xl border border-border/80 bg-card/75 p-4 transition-colors hover:border-primary/40"
                 >
-                  <motion.div
-                    whileHover={{ rotate: [0, -15, 15, 0], scale: 1.2 }}
-                    whileTap={{ scale: 1.1 }}
-                    transition={{ duration: 0.4 }}
-                  >
-                    <item.icon className="w-5 h-5 text-primary" />
-                  </motion.div>
-
-                  <span className="font-mono text-sm">{item.label}</span>
-                </Wrapper>
-              );
-            })}
+                  <Icon className="h-5 w-5 text-primary transition-transform group-hover:scale-110" />
+                  <span className="break-words font-mono text-xs text-muted-foreground transition-colors group-hover:text-primary">{label}</span>
+                </motion.a>
+              ))}
+            </div>
           </div>
         </motion.div>
 
-        <div className="mt-20 text-center text-muted-foreground text-xs font-mono">
-          <p>© 2026 {personalInfo.name}. All rights reserved.</p>
+        <div className="mt-8 flex flex-col justify-between gap-3 text-xs text-muted-foreground sm:flex-row sm:items-center">
+          <p className="font-mono">© 2026 {personalInfo.name}. All rights reserved.</p>
+          <p className="font-mono text-primary/70">Built for reliable systems and thoughtful automation.</p>
         </div>
       </div>
     </section>
