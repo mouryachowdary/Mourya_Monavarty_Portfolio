@@ -83,13 +83,7 @@ const HeroSection = () => {
 
       <div className="container relative z-10 mx-auto px-5 pb-20 pt-28 sm:px-6 lg:pb-28 lg:pt-36 print:py-4">
         <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)] lg:gap-20">
-          <motion.div
-            initial={{ opacity: 0, y: 24 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.7 }}
-            className="max-w-3xl print:max-w-none"
-          >
+          <div className="max-w-3xl print:max-w-none">
             <p className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-primary sm:text-sm">
               IT Operations / Automation Testing
             </p>
@@ -158,7 +152,7 @@ const HeroSection = () => {
                 </div>
               ))}
             </div>
-          </motion.div>
+          </div>
 
           <motion.div
             initial={{ opacity: 0, x: 28 }}
