@@ -62,10 +62,19 @@ const SkillsSection = () => {
               <p className="mt-1 text-sm text-muted-foreground">The tools I reach for most often.</p>
             </div>
             <div className="flex flex-wrap gap-2 sm:justify-end">
-              {coreStack.map((skill) => (
-                <span key={skill} className="rounded-full border border-primary/20 bg-background/50 px-3 py-1.5 font-mono text-xs text-foreground">
+              {coreStack.map((skill, skillIndex) => (
+                <motion.span
+                  key={skill}
+                  initial={{ opacity: 0, y: 6 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.25, delay: skillIndex * 0.035 }}
+                  whileHover={{ y: -3, scale: 1.05, borderColor: "hsl(174 72% 50% / 0.65)" }}
+                  whileTap={{ scale: 0.96 }}
+                  className="cursor-default rounded-full border border-primary/20 bg-background/50 px-3 py-1.5 font-mono text-xs text-foreground transition-colors"
+                >
                   {skill}
-                </span>
+                </motion.span>
               ))}
             </div>
           </div>

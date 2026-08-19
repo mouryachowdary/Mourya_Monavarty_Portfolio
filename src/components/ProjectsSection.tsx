@@ -95,13 +95,19 @@ const ProjectsSection = () => {
                   </div>
 
                   <div className="mb-6 flex flex-wrap gap-2">
-                    {project.tags.slice(0, 5).map((tag) => (
-                      <span
+                    {project.tags.slice(0, 5).map((tag, tagIndex) => (
+                      <motion.span
                         key={tag}
-                        className="rounded-full border border-primary/15 bg-primary/[0.06] px-2.5 py-1 font-mono text-[10px] text-primary/90"
+                        initial={{ opacity: 0, scale: 0.92 }}
+                        whileInView={{ opacity: 1, scale: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.25, delay: tagIndex * 0.04 }}
+                        whileHover={{ y: -3, scale: 1.06, backgroundColor: "hsl(174 72% 50% / 0.16)" }}
+                        whileTap={{ scale: 0.96 }}
+                        className="cursor-default rounded-full border border-primary/15 bg-primary/[0.06] px-2.5 py-1 font-mono text-[10px] text-primary/90 transition-colors"
                       >
                         {tag}
-                      </span>
+                      </motion.span>
                     ))}
                     {project.tags.length > 5 ? (
                       <span className="rounded-full border border-border px-2.5 py-1 font-mono text-[10px] text-muted-foreground">

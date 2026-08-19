@@ -97,10 +97,19 @@ const ExperienceSection = () => {
                     )}
 
                     <div className="mt-5 flex flex-wrap gap-2 border-t border-border/70 pt-4 print:mt-2 print:pt-2">
-                      {exp.tags.map((tag) => (
-                        <span key={tag} className="rounded-full border border-primary/15 bg-primary/[0.06] px-2.5 py-1 font-mono text-[10px] text-primary/90 print:px-2 print:py-0.5 print:text-[10px]">
+                      {exp.tags.map((tag, tagIndex) => (
+                        <motion.span
+                          key={tag}
+                          initial={{ opacity: 0, y: 5 }}
+                          whileInView={{ opacity: 1, y: 0 }}
+                          viewport={{ once: true }}
+                          transition={{ duration: 0.25, delay: tagIndex * 0.035 }}
+                          whileHover={{ y: -3, scale: 1.05, backgroundColor: "hsl(174 72% 50% / 0.16)" }}
+                          whileTap={{ scale: 0.96 }}
+                          className="cursor-default rounded-full border border-primary/15 bg-primary/[0.06] px-2.5 py-1 font-mono text-[10px] text-primary/90 transition-colors print:px-2 print:py-0.5 print:text-[10px]"
+                        >
                           {tag}
-                        </span>
+                        </motion.span>
                       ))}
                     </div>
                   </div>

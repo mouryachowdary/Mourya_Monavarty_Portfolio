@@ -128,7 +128,9 @@ const HeroSection = () => {
                 <motion.span
                   key={highlight}
                   variants={tagItem}
-                  className="rounded-full border border-primary/20 bg-primary/[0.07] px-3 py-1.5 font-mono text-xs text-primary/90"
+                  whileHover={{ y: -3, scale: 1.04, boxShadow: "0 0 18px hsl(174 72% 50% / 0.22)" }}
+                  whileTap={{ scale: 0.96 }}
+                  className="cursor-default rounded-full border border-primary/20 bg-primary/[0.07] px-3 py-1.5 font-mono text-xs text-primary/90 transition-colors hover:border-primary/45"
                 >
                   {highlight}
                 </motion.span>
