@@ -134,7 +134,16 @@
     mask-composite: exclude;
     pointer-events: none;
   }
+
+  .hero-grid {
+    background-image:
+      linear-gradient(hsl(174 72% 50% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(174 72% 50% / 0.08) 1px, transparent 1px);
+    background-size: 72px 72px;
+    mask-image: linear-gradient(to bottom, black, transparent 78%);
+  }
 }
+
 
 @media (prefers-reduced-motion: reduce) {
   * {

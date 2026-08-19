@@ -1,11 +1,11 @@
 export const personalInfo = {
   name: "Mourya Monavarty",
-  title: "IT & Systems Admin | Aspiring SDET",
+  title: "IT Operations & Test Automation",
   summary:
     "Experienced IT & Systems support engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
   highlights: [
     "6+ years in enterprise IT operations",
-    "50+ servers and 500+ endpoints managed",
+    "500+ endpoints managed",
     "Playwright, TypeScript, API testing",
   ],
   email: "mouryachowdary19aps@gmail.com",
@@ -55,7 +55,7 @@ export const experiences = [
     title: "IT & Systems Support Engineer",
     company: "CSI WEB, Sails Software Inc",
     Location: "Visakhapatnam",
-    period: "AUG 2022 - Apr 2026",
+    period: "Aug 2022 - Apr 2026",
     tasks: [
       "Administered and optimized 50+ Windows Server 2012–2022 instances across prod and staging",
       "Deployed OS images, software packages, and compliance baselines to 500+ endpoints via SCCM",
@@ -84,7 +84,7 @@ export const experiences = [
     title: "IT & Network Support Associate",
     company: "Sails Software Inc",
     Location: "Visakhapatnam",
-    period: "APR 2020 - JUL 2022",
+    period: "Apr 2020 - Jul 2022",
     tasks: [
       "Configured and maintained Cisco switches, routers, wireless APs, and Sophos XG Firewall (200+ users)",
       "Tracked and managed 200+ IT assets via Snipe-IT, ensuring accurate inventory for audit readiness",
@@ -130,7 +130,7 @@ export const projects = [
     description: [
       "Developed a responsive portfolio website using React, TypeScript, and Tailwind CSS, integrated with Framer Motion for seamless animations and interactions, to effectively showcase work experiences, projects and technical skills."
       ],
-    tags: [" React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Develpoment"],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Development"],
     live: "https://mouryamonavarty.vercel.app/",
     github: "https://github.com/mouryachowdary/Mourya_Monavarty_Portfolio.git"
   },
@@ -236,12 +236,12 @@ export const education = [
   {
     degree: "Bachelor of Technology (B.Tech) in Mechanical Engineering",
     school: "Coastal Institute of Technology & Management",
-    period: "JUN 2019 - NOV 2022",
+    period: "Jun 2019 - Nov 2022",
   },
   {
     degree: "Diploma in Mechanical Engineering",
     school: "Sri Chaitanya Engineering College",
-    period: "APR 2016 - APR 2019",
+    period: "Apr 2016 - Apr 2019",
   },
 ];
 

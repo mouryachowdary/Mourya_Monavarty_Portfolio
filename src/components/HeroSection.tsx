@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
+import { Activity, ArrowDownRight, ArrowUpRight, Download, Server, ShieldCheck } from "lucide-react";
 import heroBg from "@/assets/hero-bg.jpg";
 import profilePic from "@/assets/profile.jpg";
 import { personalInfo } from "@/data/resumeData";
@@ -9,10 +10,7 @@ const tagContainer: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
-    transition: {
-      staggerChildren: 0.08,
-      delayChildren: 0.05,
-    },
+    transition: { staggerChildren: 0.08, delayChildren: 0.05 },
   },
 };
 
@@ -22,39 +20,41 @@ const tagItem: Variants = {
     opacity: 1,
     y: 0,
     scale: 1,
-    transition: {
-      type: "spring" as const,
-      stiffness: 260,
-      damping: 18,
-    },
+    transition: { type: "spring" as const, stiffness: 260, damping: 18 },
   },
 };
+
+const metrics = [
+  { value: "6+", label: "years experience", icon: Activity },
+  { value: "500+", label: "endpoints managed", icon: Server },
+  { value: "99.5%", label: "availability SLA", icon: ShieldCheck },
+];
 
 const HeroSection = () => {
   const [showBackgroundImage, setShowBackgroundImage] = useState(false);
 
   useEffect(() => {
     const schedule = () => setShowBackgroundImage(true);
-    const fallbackToTimeout = () => {
-      const timeoutId = window.setTimeout(schedule, 1200);
-      return () => window.clearTimeout(timeoutId);
-    };
-
     if ("requestIdleCallback" in window) {
       const id = window.requestIdleCallback(schedule, { timeout: 2000 });
       return () => window.cancelIdleCallback(id);
     }
 
-    return fallbackToTimeout();
+    const timeoutId = window.setTimeout(schedule, 1200);
+    return () => window.clearTimeout(timeoutId);
   }, []);
+
+  const handleResume = async () => {
+    const { generateResume } = await import("@/lib/generateResume");
+    generateResume();
+  };
 
   return (
     <section
       id="home"
-      className="relative min-h-screen print:min-h-0 flex items-center justify-center overflow-hidden print:py-4 section-shell"
+      className="relative min-h-[calc(100vh-4rem)] overflow-hidden section-shell print:min-h-0 print:py-4"
     >
-      {/* Background */}
-      <div className="absolute inset-0 print:hidden">
+      <div className="absolute inset-0 print:hidden" aria-hidden="true">
         {showBackgroundImage ? (
           <img
             src={heroBg}
@@ -62,163 +62,154 @@ const HeroSection = () => {
             loading="lazy"
             fetchPriority="low"
             decoding="async"
-            className="w-full h-full object-cover opacity-40"
+            className="h-full w-full object-cover object-center opacity-30"
           />
         ) : null}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/60 via-background/80 to-background" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,hsl(174_72%_50%_/_0.12),transparent_30%),linear-gradient(180deg,hsl(220_20%_6%_/_0.72),hsl(220_20%_6%_/_0.96))]" />
+        <div className="hero-grid absolute inset-0 opacity-40" />
       </div>
 
-      <div className="container relative z-10 px-6 py-20 print:py-4">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.8 }}
-          className="max-w-4xl flex flex-col md:flex-row items-center gap-10 print:gap-4"
-        >
-          {/* 🔥 Profile Image (FINAL) */}
+      <div className="container relative z-10 mx-auto px-5 pb-20 pt-28 sm:px-6 lg:pb-28 lg:pt-36 print:py-4">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)] lg:gap-20">
           <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            transition={{ delay: 0.2, duration: 0.6 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 1.05 }}
-            className="shrink-0 print:hidden"
+            initial={{ opacity: 0, y: 24 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, amount: 0.3 }}
+            transition={{ duration: 0.7 }}
+            className="max-w-3xl print:max-w-none"
           >
-            <div className="relative w-40 h-48 md:w-52 md:h-60 rounded-xl overflow-hidden border border-primary/40 transition-all duration-300 hover:shadow-[0_0_40px_rgba(0,255,200,0.45)] active:shadow-[0_0_40px_rgba(0,255,200,0.45)]">
+            <p className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-primary sm:text-sm">
+              IT Operations / Automation Testing
+            </p>
 
-              {/* Glow Border */}
-              <div className="absolute inset-0 rounded-xl border border-primary/40 pointer-events-none" />
+            <h1 className="max-w-3xl text-5xl font-bold leading-[0.96] tracking-tight text-foreground sm:text-7xl lg:text-8xl print:text-4xl">
+              <span className="block text-primary text-glow-strong">Mourya</span>
+              <span className="block">Monavarty</span>
+            </h1>
 
-              <img
-                src={profilePic}
-                alt={personalInfo.name}
-                loading="eager"
-                fetchPriority="high"
-                decoding="async"
-                sizes="(max-width: 768px) 160px, 208px"
-                className="w-full h-full object-cover object-top transition-transform duration-300"
-              />
-            </div>
-          </motion.div>
+            <p className="mt-7 max-w-2xl text-xl leading-relaxed text-muted-foreground sm:text-2xl print:mt-2 print:text-base">
+              I build reliable systems, streamline IT operations, and create resilient Playwright-based automation for real-world environments.
+            </p>
 
-          {/* Text Content */}
-          <div>
-            {/* Greeting */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="font-mono text-primary text-sm tracking-widest uppercase mb-4 print:mb-1"
-            >
-              &gt; Hello, I'm
-            </motion.p>
-
-            {/* Name */}
-            <motion.h1
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.4, duration: 0.6 }}
-              className="text-5xl md:text-7xl font-bold font-display mb-4 print:mb-2 text-glow-strong print:text-3xl"
-            >
-              {personalInfo.name.split(" ").map((word, i) => (
-                <motion.span
-                  key={i}
-                  className={`${
-                    i === 0 ? "text-primary" : "text-foreground"
-                  } inline-block`}
-                  whileHover={{
-                    scale: 1.1,
-                    textShadow:
-                      i === 0
-                        ? "0 0 30px hsl(174 72% 50% / 0.6)"
-                        : "0 0 20px rgba(255,255,255,0.3)",
-                  }}
-                  whileTap={{ scale: 0.95 }}
-                  transition={{ type: "spring", stiffness: 300 }}
-                >
-                  {word}&nbsp;
-                </motion.span>
-              ))}
-            </motion.h1>
-
-            {/* Title */}
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              className="text-xl md:text-2xl text-muted-foreground font-display font-light mb-8 print:mb-2 print:text-base"
-            >
-              {personalInfo.title}
-            </motion.h2>
-
-            {/* Summary */}
-            <motion.p
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.8 }}
-              className="text-secondary-foreground leading-relaxed print:leading-tight max-w-2xl mb-10 print:mb-3 text-base print:text-sm"
-            >
+            <p className="mt-5 max-w-2xl text-base leading-7 text-secondary-foreground/85 print:mt-2 print:text-sm">
               {personalInfo.summary}
-            </motion.p>
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3 print:hidden">
+              <motion.a
+                href="#projects"
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_24px_hsl(174_72%_50%_/_0.24)] transition hover:shadow-[0_0_34px_hsl(174_72%_50%_/_0.4)]"
+              >
+                View my work
+                <ArrowUpRight className="h-4 w-4" />
+              </motion.a>
+              <motion.button
+                type="button"
+                onClick={handleResume}
+                whileHover={{ y: -3, scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                className="inline-flex items-center gap-2 rounded-md border border-primary/35 bg-background/30 px-5 py-3 text-sm font-semibold text-foreground transition hover:border-primary/70 hover:bg-primary/10"
+              >
+                Download resume
+                <Download className="h-4 w-4 text-primary" />
+              </motion.button>
+            </div>
 
             <motion.div
               variants={tagContainer}
               initial="hidden"
               whileInView="visible"
               viewport={{ once: true }}
-              className="flex flex-wrap gap-3 mb-10 print:hidden"
+              className="mt-9 flex flex-wrap gap-2 print:hidden"
             >
-              {personalInfo.highlights.map((highlight, index) => (
+              {personalInfo.highlights.map((highlight) => (
                 <motion.span
                   key={highlight}
                   variants={tagItem}
-                  animate={{ y: [0, index % 2 === 0 ? -3 : 3, 0] }}
-                  transition={{
-                    y: {
-                      duration: 3 + index * 0.35,
-                      repeat: Infinity,
-                      ease: "easeInOut",
-                    },
-                  }}
-                  whileHover={{
-                    y: -4,
-                    scale: 1.06,
-                    boxShadow: "0 0 24px hsl(174 72% 50% / 0.32)",
-                    borderColor: "hsl(174 72% 50% / 0.55)",
-                  }}
-                  whileTap={{ scale: 0.97 }}
-                  className="rounded-full border border-primary/25 bg-primary/10 px-4 py-2 text-sm font-mono text-primary"
+                  className="rounded-full border border-primary/20 bg-primary/[0.07] px-3 py-1.5 font-mono text-xs text-primary/90"
                 >
                   {highlight}
                 </motion.span>
               ))}
             </motion.div>
-          </div>
-        </motion.div>
+
+            <div className="mt-10 grid max-w-2xl grid-cols-3 border-y border-border/70 py-5 print:hidden">
+              {metrics.map(({ value, label, icon: Icon }, index) => (
+                <div key={label} className={`pr-4 ${index > 0 ? "border-l border-border/70 pl-4" : ""}`}>
+                  <Icon className="mb-3 h-4 w-4 text-primary" />
+                  <p className="text-2xl font-semibold tracking-tight text-foreground sm:text-3xl">{value}</p>
+                  <p className="mt-1 text-xs leading-5 text-muted-foreground sm:text-sm">{label}</p>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, x: 28 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true, amount: 0.25 }}
+            transition={{ duration: 0.75, delay: 0.1 }}
+            className="relative mx-auto w-full max-w-xl print:hidden"
+          >
+            <div className="absolute -inset-8 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+            <div className="relative grid grid-cols-[minmax(0,1fr)_132px] items-center gap-4 sm:gap-6">
+              <motion.div
+                whileHover={{ y: -5 }}
+                className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/55 bg-card/80 shadow-[0_0_50px_hsl(174_72%_50%_/_0.2)]"
+              >
+                <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-primary/10" />
+                <img
+                  src={profilePic}
+                  alt={personalInfo.name}
+                  loading="eager"
+                  fetchPriority="high"
+                  decoding="async"
+                  sizes="(max-width: 768px) 70vw, 420px"
+                  className="h-full w-full object-cover object-top"
+                />
+                <div className="absolute bottom-4 left-4 rounded-full border border-primary/25 bg-background/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md">
+                  Systems / QA
+                </div>
+              </motion.div>
+
+              <div className="space-y-3">
+                <div className="rounded-xl border border-primary/20 bg-card/80 p-3 backdrop-blur-md">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">System health</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">99.5%</p>
+                  <p className="text-[10px] text-muted-foreground">availability</p>
+                </div>
+                <div className="rounded-xl border border-primary/20 bg-card/80 p-3 backdrop-blur-md">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Endpoints</p>
+                  <p className="mt-2 text-2xl font-semibold text-primary">500+</p>
+                  <div className="mt-3 flex items-end gap-1" aria-hidden="true">
+                    {[30, 42, 36, 57, 49, 70, 64, 82].map((height, index) => (
+                      <span key={index} className="h-8 flex-1 rounded-sm bg-primary/15" style={{ height: `${height}%` }} />
+                    ))}
+                  </div>
+                </div>
+                <div className="rounded-xl border border-primary/20 bg-card/80 p-3 backdrop-blur-md">
+                  <p className="font-mono text-[9px] uppercase tracking-wider text-muted-foreground">Focus</p>
+                  <p className="mt-2 text-sm font-semibold text-foreground">Reliable automation</p>
+                  <ArrowDownRight className="mt-3 h-4 w-4 text-primary" />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        </div>
       </div>
 
-      {/* Scroll Indicator */}
-      <motion.div
+      <motion.a
+        href="#experience"
         initial={{ opacity: 0 }}
-        whileInView={{ opacity: 1 }}
-        viewport={{ once: true }}
+        animate={{ opacity: 1 }}
         transition={{ delay: 1.2 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 print:hidden"
+        className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 items-center gap-2 font-mono text-[10px] uppercase tracking-[0.2em] text-muted-foreground transition hover:text-primary lg:flex print:hidden"
       >
-        <motion.div
-          animate={{ y: [0, 8, 0] }}
-          transition={{ repeat: Infinity, duration: 1.5 }}
-          className="w-5 h-8 border-2 border-primary/40 rounded-full flex justify-center pt-1"
-        >
-          <div className="w-1 h-2 bg-primary rounded-full" />
-        </motion.div>
-      </motion.div>
+        Scroll to explore
+        <ArrowDownRight className="h-4 w-4 rotate-45 text-primary" />
+      </motion.a>
     </section>
   );
 };
