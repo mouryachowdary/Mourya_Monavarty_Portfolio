@@ -3,12 +3,19 @@ import App from "./App.tsx";
 import "./index.css";
 
 const setupVercelTelemetry = () => {
-	void Promise.all([
-		import("@vercel/analytics").then(({ inject }) => inject()),
-		import("@vercel/speed-insights").then(({ injectSpeedInsights }) => injectSpeedInsights()),
-	]);
+  const loadTelemetry = () => {
+    void Promise.all([
+      import("@vercel/analytics").then(({ inject }) => inject()),
+      import("@vercel/speed-insights").then(({ injectSpeedInsights }) => injectSpeedInsights()),
+    ]);
+  };
+
+  if ("requestIdleCallback" in window) {
+    window.requestIdleCallback(loadTelemetry, { timeout: 3000 });
+  } else {
+    window.setTimeout(loadTelemetry, 1500);
+  }
 };
 
-setupVercelTelemetry();
-
 createRoot(document.getElementById("root")!).render(<App />);
+setupVercelTelemetry();

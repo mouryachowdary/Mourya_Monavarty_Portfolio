@@ -2,8 +2,12 @@ import { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
 import { Activity, ArrowDownRight, ArrowUpRight, Download, Server, ShieldCheck } from "lucide-react";
-import heroBg from "@/assets/hero-bg.jpg";
-import profilePic from "@/assets/profile.jpg";
+import heroBgFallback from "@/assets/hero-bg.jpg";
+import heroBg1280Webp from "@/assets/hero-bg-1280.webp";
+import heroBg1280Avif from "@/assets/hero-bg-1280.avif";
+import heroBg1920Webp from "@/assets/hero-bg-1920.webp";
+import heroBg1920Avif from "@/assets/hero-bg-1920.avif";
+import profileFallback from "@/assets/profile.jpg";
 import { personalInfo } from "@/data/resumeData";
 
 const tagContainer: Variants = {
@@ -56,14 +60,22 @@ const HeroSection = () => {
     >
       <div className="absolute inset-0 print:hidden" aria-hidden="true">
         {showBackgroundImage ? (
-          <img
-            src={heroBg}
-            alt=""
-            loading="lazy"
-            fetchPriority="low"
-            decoding="async"
-            className="h-full w-full object-cover object-center opacity-30"
-          />
+          <picture className="absolute inset-0 block">
+            <source media="(max-width: 768px)" type="image/avif" srcSet={heroBg1280Avif} />
+            <source media="(max-width: 768px)" type="image/webp" srcSet={heroBg1280Webp} />
+            <source type="image/avif" srcSet={heroBg1920Avif} />
+            <source type="image/webp" srcSet={heroBg1920Webp} />
+            <img
+              src={heroBgFallback}
+              alt=""
+              width={1920}
+              height={1080}
+              loading="lazy"
+              fetchPriority="low"
+              decoding="async"
+              className="h-full w-full object-cover object-center opacity-30"
+            />
+          </picture>
         ) : null}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,hsl(174_72%_50%_/_0.12),transparent_30%),linear-gradient(180deg,hsl(220_20%_6%_/_0.72),hsl(220_20%_6%_/_0.96))]" />
         <div className="hero-grid absolute inset-0 opacity-40" />
@@ -162,15 +174,23 @@ const HeroSection = () => {
                 className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/55 bg-card/80 shadow-[0_0_50px_hsl(174_72%_50%_/_0.2)]"
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-primary/10" />
-                <img
-                  src={profilePic}
-                  alt={personalInfo.name}
-                  loading="eager"
-                  fetchPriority="high"
-                  decoding="async"
-                  sizes="(max-width: 768px) 70vw, 420px"
-                  className="h-full w-full object-cover object-top"
-                />
+                <picture className="block h-full w-full">
+                  <source media="(max-width: 640px)" type="image/avif" srcSet="/portfolio/profile-480.avif" />
+                  <source media="(max-width: 640px)" type="image/webp" srcSet="/portfolio/profile-480.webp" />
+                  <source type="image/avif" srcSet="/portfolio/profile-768.avif" />
+                  <source type="image/webp" srcSet="/portfolio/profile-768.webp" />
+                  <img
+                    src={profileFallback}
+                    alt={personalInfo.name}
+                    width={768}
+                    height={1152}
+                    loading="eager"
+                    fetchPriority="high"
+                    decoding="async"
+                    sizes="(max-width: 640px) 70vw, 420px"
+                    className="h-full w-full object-cover object-top"
+                  />
+                </picture>
                 <div className="absolute bottom-4 left-4 rounded-full border border-primary/25 bg-background/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md">
                   Systems / QA
                 </div>
