@@ -31,7 +31,7 @@ const DeferredSection = ({ load }: { load: SectionLoader }) => {
             loadSection();
           }
         },
-        { rootMargin: "640px 0px" },
+        { rootMargin: "220px 0px" },
       );
       observer.observe(target);
       return () => {
