@@ -2,15 +2,16 @@ import { useState } from "react";
 import { motion } from "framer-motion";
 import {
   Activity,
+  ArrowUpRight,
   Briefcase,
+  CheckCircle2,
+  ExternalLink,
   FolderGit2,
   Github,
-  ExternalLink,
   Image,
   Rocket,
   Stethoscope,
   X,
-  ArrowUpRight,
 } from "lucide-react";
 import { projects } from "@/data/resumeData";
 
@@ -45,16 +46,19 @@ const ProjectsSection = () => {
         >
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm">
-              Selected work / evidence
+              Systems under test / selected evidence
             </p>
             <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground sm:text-5xl">
               <span className="h-10 w-1 rounded-full bg-primary shadow-[0_0_18px_hsl(174_72%_50%_/_0.6)]" />
               Featured Projects
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-muted-foreground sm:text-right">
-            Practical tools and automation workflows built to make systems easier to trust, test, and operate.
-          </p>
+          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-right">
+            <span className="flex items-center gap-2 text-primary">
+              <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_hsl(174_72%_50%_/_0.8)]" />
+              {projects.length} test runs passed
+            </span>
+          </div>
         </motion.div>
 
         <div className="grid gap-5 md:grid-cols-2 lg:grid-cols-3">
@@ -70,15 +74,20 @@ const ProjectsSection = () => {
                 whileHover={{ y: -6 }}
                 className="group relative flex flex-col overflow-hidden rounded-2xl border border-border/80 bg-card/70 shadow-[0_18px_50px_hsl(220_20%_3%_/_0.18)] transition-colors duration-300 hover:border-primary/35"
               >
-                <div className={`relative h-36 overflow-hidden bg-gradient-to-br ${getProjectAccent(project.title)}`}>
+                <div className={`relative h-40 overflow-hidden bg-gradient-to-br ${getProjectAccent(project.title)}`}>
                   <div className="absolute inset-0 opacity-40 [background-image:linear-gradient(hsl(174_72%_50%_/_0.12)_1px,transparent_1px),linear-gradient(90deg,hsl(174_72%_50%_/_0.12)_1px,transparent_1px)] [background-size:24px_24px]" />
-                  <div className="absolute -right-8 -top-12 h-36 w-36 rounded-full border border-primary/20" />
-                  <div className="absolute -right-2 -top-5 h-28 w-28 rounded-full border border-primary/10" />
-                  <div className="absolute bottom-5 left-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/30 bg-background/70 text-primary shadow-[0_0_25px_hsl(174_72%_50%_/_0.18)] backdrop-blur-sm">
+                  <div className="absolute -right-8 -top-12 h-36 w-36 rounded-full border border-primary/20 transition-transform duration-500 group-hover:scale-125" />
+                  <div className="absolute -right-2 -top-5 h-28 w-28 rounded-full border border-primary/10 transition-transform duration-500 group-hover:rotate-45" />
+                  <div className="absolute left-5 top-5 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary">
+                    <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_10px_hsl(174_72%_50%_/_0.8)]" />
+                    Test run 0{i + 1}
+                  </div>
+                  <div className="absolute bottom-5 left-6 flex h-12 w-12 items-center justify-center rounded-xl border border-primary/30 bg-background/70 text-primary shadow-[0_0_25px_hsl(174_72%_50%_/_0.18)] backdrop-blur-sm transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3">
                     <ProjectIcon className="h-6 w-6" />
                   </div>
-                  <span className="absolute right-5 top-5 font-mono text-[10px] uppercase tracking-[0.2em] text-foreground/60">
-                    0{i + 1}
+                  <span className="absolute right-5 top-5 flex items-center gap-1.5 rounded-full border border-primary/20 bg-background/40 px-2.5 py-1 font-mono text-[10px] uppercase tracking-[0.16em] text-primary backdrop-blur-sm">
+                    <CheckCircle2 className="h-3 w-3" />
+                    Passed
                   </span>
                 </div>
 
@@ -91,6 +100,22 @@ const ProjectsSection = () => {
                       {project.description.map((point, index) => (
                         <p key={index}>{point}</p>
                       ))}
+                    </div>
+                  </div>
+
+                  <div className="mb-6 rounded-xl border border-border/70 bg-background/35 p-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    <div className="flex items-center justify-between gap-3">
+                      <span>Validation suite</span>
+                      <span className="text-primary">Ready</span>
+                    </div>
+                    <div className="mt-2 h-1 overflow-hidden rounded-full bg-border/70">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 + i * 0.08 }}
+                        className="h-full rounded-full bg-primary shadow-[0_0_10px_hsl(174_72%_50%_/_0.7)]"
+                      />
                     </div>
                   </div>
 

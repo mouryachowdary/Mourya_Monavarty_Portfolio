@@ -1,13 +1,13 @@
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X, ArrowUpRight } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowUpRight, Menu, Radio, X } from "lucide-react";
 
 const links = [
   { label: "Home", href: "#home" },
-  { label: "Experience", href: "#experience" },
-  { label: "Projects", href: "#projects" },
-  { label: "Skills", href: "#skills" },
-  { label: "Education", href: "#education" },
+  { label: "Operations", href: "#experience" },
+  { label: "Systems", href: "#projects" },
+  { label: "Stack", href: "#skills" },
+  { label: "Credentials", href: "#education" },
   { label: "Resume", href: "#", action: "resume" },
   { label: "Contact", href: "#contact" },
 ];
@@ -38,6 +38,7 @@ const Navbar = () => {
           ? "border-b border-primary/15 bg-background/90 shadow-[0_14px_40px_hsl(220_20%_4%_/_0.3)] backdrop-blur-xl"
           : "bg-background/45 backdrop-blur-md"
       }`}
+      aria-label="Primary navigation"
     >
       <div className="container mx-auto flex h-[4.5rem] items-center justify-between px-5 sm:px-6">
         <motion.a
@@ -50,31 +51,37 @@ const Navbar = () => {
           <span className="hidden text-[10px] font-medium uppercase tracking-[0.2em] text-muted-foreground sm:inline">Reliability / QA</span>
         </motion.a>
 
-        <ul className="hidden items-center gap-5 lg:flex">
-          {links.map((link) => {
-            const isResume = link.action === "resume";
-            return (
-              <li key={link.label}>
-                <motion.a
-                  href={link.href}
-                  onClick={(e) => handleClick(link, e)}
-                  whileTap={{ scale: 0.95 }}
-                  className={`group relative inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-xs font-medium transition-colors ${
-                    isResume
-                      ? "border border-primary/35 bg-primary/10 text-primary hover:bg-primary/15"
-                      : "text-muted-foreground hover:text-foreground"
-                  }`}
-                >
-                  {link.label}
-                  {isResume ? <ArrowUpRight className="h-3.5 w-3.5" /> : null}
-                  {!isResume && (
-                    <span className="absolute inset-x-2 bottom-1 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
-                  )}
-                </motion.a>
-              </li>
-            );
-          })}
-        </ul>
+        <div className="hidden items-center gap-4 lg:flex">
+          <div className="flex items-center gap-2 font-mono text-[9px] uppercase tracking-[0.16em] text-primary/80" aria-label="System status online">
+            <Radio className="h-3.5 w-3.5 animate-pulse" />
+            Online
+          </div>
+          <ul className="flex items-center gap-3">
+            {links.map((link) => {
+              const isResume = link.action === "resume";
+              return (
+                <li key={link.label}>
+                  <motion.a
+                    href={link.href}
+                    onClick={(e) => handleClick(link, e)}
+                    whileTap={{ scale: 0.95 }}
+                    className={`group relative inline-flex items-center gap-1.5 rounded-md px-2.5 py-2 text-xs font-medium transition-colors ${
+                      isResume
+                        ? "border border-primary/35 bg-primary/10 text-primary hover:bg-primary/15"
+                        : "text-muted-foreground hover:text-foreground"
+                    }`}
+                  >
+                    {link.label}
+                    {isResume ? <ArrowUpRight className="h-3.5 w-3.5" /> : null}
+                    {!isResume && (
+                      <span className="absolute inset-x-2 bottom-1 h-px origin-left scale-x-0 bg-primary transition-transform duration-300 group-hover:scale-x-100" />
+                    )}
+                  </motion.a>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
 
         <motion.button
           type="button"

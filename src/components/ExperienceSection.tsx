@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import { BriefcaseBusiness, ChevronDown, MapPin } from "lucide-react";
+import { BriefcaseBusiness, CheckCircle2, ChevronDown, MapPin, ShieldCheck } from "lucide-react";
 import { experiences } from "@/data/resumeData";
 
 const ExperienceSection = () => {
@@ -15,7 +15,7 @@ const ExperienceSection = () => {
         >
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm print:mb-1">
-              Career history / measurable impact
+              Operations log / verified impact
             </p>
             <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground sm:text-5xl print:text-xl">
               <span className="h-10 w-1 rounded-full bg-primary shadow-[0_0_18px_hsl(174_72%_50%_/_0.6)] print:hidden" />
@@ -23,12 +23,18 @@ const ExperienceSection = () => {
               Professional Experience
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-muted-foreground sm:text-right">
-            Infrastructure, security, and automation work across enterprise environments.
-          </p>
+          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-right">
+            <span className="flex items-center gap-2 text-primary">
+              <span className="h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_hsl(174_72%_50%_/_0.8)]" />
+              All systems stable
+            </span>
+            <span className="hidden text-border sm:inline">/</span>
+            <span className="hidden sm:inline">{experiences.length} deployments</span>
+          </div>
         </motion.div>
 
-        <div className="space-y-5 print:space-y-4">
+        <div className="relative space-y-5 print:space-y-4">
+          <div className="pointer-events-none absolute bottom-8 left-[1.1rem] top-8 hidden w-px bg-gradient-to-b from-primary/60 via-primary/20 to-transparent sm:block" aria-hidden="true" />
           {experiences.map((exp, i) => {
             const visibleTasks = exp.tasks.slice(0, 5);
             const additionalTasks = exp.tasks.slice(5);
@@ -44,8 +50,8 @@ const ExperienceSection = () => {
               >
                 <div className="absolute inset-y-0 left-0 w-1 bg-gradient-to-b from-primary via-primary/40 to-transparent opacity-70" aria-hidden="true" />
                 <div className="flex flex-col gap-5 sm:flex-row sm:gap-7">
-                  <div className="flex shrink-0 items-start justify-between sm:block">
-                    <span className="font-mono text-4xl font-bold tracking-tight text-primary/25 sm:text-5xl print:text-3xl">
+                  <div className="relative z-10 flex shrink-0 items-start justify-between sm:block">
+                    <span className="flex h-9 w-9 items-center justify-center rounded-full border border-primary/40 bg-background font-mono text-xs font-semibold text-primary shadow-[0_0_18px_hsl(174_72%_50%_/_0.18)] sm:h-10 sm:w-10">
                       {exp.number}
                     </span>
                     <span className="rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary sm:hidden">
@@ -54,8 +60,12 @@ const ExperienceSection = () => {
                   </div>
 
                   <div className="min-w-0 flex-1">
-                    <div className="flex flex-col justify-between gap-2 sm:flex-row sm:items-start">
+                    <div className="flex flex-col justify-between gap-3 sm:flex-row sm:items-start">
                       <div>
+                        <div className="mb-2 flex items-center gap-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary/80">
+                          <ShieldCheck className="h-3.5 w-3.5" />
+                          Deployment 0{i + 1} / stable
+                        </div>
                         <h3 className="text-xl font-semibold tracking-tight text-foreground transition-colors group-hover:text-primary print:text-base">
                           {exp.title}
                         </h3>
@@ -65,15 +75,21 @@ const ExperienceSection = () => {
                           {exp.Location}
                         </p>
                       </div>
-                      <span className="hidden rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary sm:inline-flex print:inline-flex">
-                        {exp.period}
-                      </span>
+                      <div className="flex flex-col items-start gap-2 sm:items-end">
+                        <span className="hidden rounded-full border border-primary/20 bg-primary/[0.06] px-3 py-1 font-mono text-[10px] uppercase tracking-wider text-primary sm:inline-flex print:inline-flex">
+                          {exp.period}
+                        </span>
+                        <span className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-wider text-muted-foreground">
+                          <CheckCircle2 className="h-3.5 w-3.5 text-primary" />
+                          Verified
+                        </span>
+                      </div>
                     </div>
 
                     <ul className="mt-5 space-y-2 print:mt-2 print:space-y-1">
                       {visibleTasks.map((task) => (
                         <li key={task} className="flex items-start gap-2 text-sm leading-6 text-secondary-foreground print:text-xs print:leading-tight">
-                          <span className="mt-1 text-primary" aria-hidden="true">▸</span>
+                          <span className="mt-1 font-mono text-primary" aria-hidden="true">›</span>
                           <span>{task}</span>
                         </li>
                       ))}
@@ -88,7 +104,7 @@ const ExperienceSection = () => {
                         <ul className="mt-3 space-y-2 print:mt-0 print:space-y-1">
                           {additionalTasks.map((task) => (
                             <li key={task} className="flex items-start gap-2 text-sm leading-6 text-secondary-foreground print:text-xs print:leading-tight">
-                              <span className="mt-1 text-primary" aria-hidden="true">▸</span>
+                              <span className="mt-1 font-mono text-primary" aria-hidden="true">›</span>
                               <span>{task}</span>
                             </li>
                           ))}

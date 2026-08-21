@@ -27,7 +27,7 @@ const coreStack = ["Microsoft 365", "Intune", "Windows Server", "PowerShell", "P
 
 const SkillsSection = () => {
   return (
-    <section id="skills" className="section-shell py-20 sm:py-24 lg:py-28 print:py-3 print:[break-before:page]">
+    <section id="skills" className="section-shell bg-secondary/20 py-20 sm:py-24 lg:py-28 print:py-3 print:[break-before:page]">
       <div className="container mx-auto px-5 sm:px-6">
         <motion.div
           initial={{ opacity: 0, y: 24 }}
@@ -38,30 +38,37 @@ const SkillsSection = () => {
         >
           <div>
             <p className="mb-3 font-mono text-xs font-semibold uppercase tracking-[0.2em] text-primary sm:text-sm print:mb-1">
-              Capability map / toolbelt
+              Capability map / core stack
             </p>
             <h2 className="flex items-center gap-3 text-3xl font-bold tracking-tight text-foreground sm:text-5xl print:text-xl">
               <span className="h-10 w-1 rounded-full bg-primary shadow-[0_0_18px_hsl(174_72%_50%_/_0.6)] print:hidden" />
               Technical Skills
             </h2>
           </div>
-          <p className="max-w-sm text-sm leading-6 text-muted-foreground sm:text-right">
-            A practical stack spanning infrastructure, security, automation, and application quality.
-          </p>
+          <div className="flex items-center gap-3 font-mono text-[10px] uppercase tracking-[0.18em] text-muted-foreground sm:text-right">
+            <span className="text-primary">{skillGroups.length} capability domains</span>
+            <span className="hidden text-border sm:inline">/</span>
+            <span className="hidden sm:inline">Ready for deployment</span>
+          </div>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mb-8 rounded-2xl border border-primary/20 bg-primary/[0.05] p-5 sm:p-6 print:hidden"
+          className="mb-8 overflow-hidden rounded-2xl border border-primary/20 bg-primary/[0.05] p-5 sm:p-6 print:hidden"
         >
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Core stack</p>
-              <p className="mt-1 text-sm text-muted-foreground">The tools I reach for most often.</p>
+          <div className="flex flex-col gap-5 lg:flex-row lg:items-center lg:justify-between">
+            <div className="flex items-start gap-3">
+              <div className="mt-0.5 flex h-9 w-9 items-center justify-center rounded-lg border border-primary/25 bg-background/60 text-primary">
+                <Code className="h-4 w-4" />
+              </div>
+              <div>
+                <p className="font-mono text-[10px] uppercase tracking-[0.2em] text-primary">Core stack / loaded</p>
+                <p className="mt-1 text-sm text-muted-foreground">The tools I reach for most often.</p>
+              </div>
             </div>
-            <div className="flex flex-wrap gap-2 sm:justify-end">
+            <div className="flex flex-wrap gap-2 lg:max-w-3xl lg:justify-end">
               {coreStack.map((skill, skillIndex) => (
                 <motion.span
                   key={skill}
@@ -91,20 +98,21 @@ const SkillsSection = () => {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.06 }}
                 whileHover={{ y: -4 }}
-                className="skills-card group rounded-2xl border border-border/80 bg-card/65 p-5 transition-colors hover:border-primary/35 print:rounded-lg print:p-3"
+                className="skills-card group relative overflow-hidden rounded-2xl border border-border/80 bg-card/65 p-5 transition-colors hover:border-primary/35 print:rounded-lg print:p-3"
               >
-                <div className="mb-5 flex items-start justify-between print:mb-2">
+                <div className="absolute right-0 top-0 h-24 w-24 rounded-full bg-primary/[0.04] blur-2xl transition-opacity group-hover:opacity-0" aria-hidden="true" />
+                <div className="relative mb-5 flex items-start justify-between print:mb-2">
                   <div className="flex h-10 w-10 items-center justify-center rounded-xl border border-primary/20 bg-primary/[0.07] print:h-7 print:w-7">
-                    <Icon className="skills-icon h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110 print:h-4 print:w-4" />
+                    <Icon className="skills-icon h-5 w-5 text-primary transition-transform duration-300 group-hover:scale-110 group-hover:rotate-3 print:h-4 print:w-4" />
                   </div>
-                  <span className="font-mono text-[10px] text-muted-foreground">0{i + 1}</span>
+                  <span className="font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">0{i + 1} / ready</span>
                 </div>
 
-                <h3 className="mb-4 text-base font-semibold tracking-tight text-foreground print:mb-2 print:text-sm">
+                <h3 className="relative mb-4 text-base font-semibold tracking-tight text-foreground print:mb-2 print:text-sm">
                   {group.title}
                 </h3>
 
-                <ul className="space-y-2 print:space-y-1">
+                <ul className="relative space-y-2 print:space-y-1">
                   {group.skills.map((skill) => (
                     <li key={skill} className="flex items-center gap-2 text-sm text-muted-foreground print:text-[11px]">
                       <span className="h-1.5 w-1.5 shrink-0 rounded-full bg-primary/70" aria-hidden="true" />

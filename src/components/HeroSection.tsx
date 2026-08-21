@@ -1,7 +1,17 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, type PointerEvent, type CSSProperties } from "react";
 import { motion } from "framer-motion";
 import type { Variants } from "framer-motion";
-import { Activity, ArrowDownRight, ArrowUpRight, Download, Server, ShieldCheck } from "lucide-react";
+import {
+  Activity,
+  ArrowDownRight,
+  ArrowUpRight,
+  CheckCircle2,
+  Download,
+  Fingerprint,
+  ScanLine,
+  Server,
+  ShieldCheck,
+} from "lucide-react";
 import heroBgFallback from "@/assets/hero-bg.jpg";
 import heroBg1280Webp from "@/assets/hero-bg-1280.webp";
 import heroBg1280Avif from "@/assets/hero-bg-1280.avif";
@@ -29,13 +39,15 @@ const tagItem: Variants = {
 };
 
 const metrics = [
-  { value: "6+", label: "years experience", icon: Activity },
+  { value: "6+", label: "years in enterprise IT", icon: Activity },
   { value: "500+", label: "endpoints managed", icon: Server },
   { value: "99.5%", label: "availability SLA", icon: ShieldCheck },
 ];
 
 const HeroSection = () => {
   const [showBackgroundImage, setShowBackgroundImage] = useState(false);
+  const [revealActive, setRevealActive] = useState(false);
+  const [pointerX, setPointerX] = useState(50);
 
   useEffect(() => {
     const schedule = () => setShowBackgroundImage(true);
@@ -52,6 +64,23 @@ const HeroSection = () => {
     const { generateResume } = await import("@/lib/generateResume");
     generateResume();
   };
+
+  const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "touch") return;
+    const bounds = event.currentTarget.getBoundingClientRect();
+    setPointerX(Math.max(10, Math.min(90, ((event.clientX - bounds.left) / bounds.width) * 100)));
+    setRevealActive(true);
+  };
+
+  const handlePointerLeave = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType === "mouse") setRevealActive(false);
+  };
+
+  const revealStyle = {
+    clipPath: revealActive
+      ? "polygon(0 0, 18% 0, 12% 100%, 0 100%)"
+      : "polygon(0 0, 52% 0, 46% 100%, 0 100%)",
+  } as CSSProperties;
 
   return (
     <section
@@ -73,28 +102,36 @@ const HeroSection = () => {
               loading="lazy"
               fetchPriority="low"
               decoding="async"
-              className="h-full w-full object-cover object-center opacity-30"
+              className="h-full w-full object-cover object-center opacity-25"
             />
           </picture>
         ) : null}
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,hsl(174_72%_50%_/_0.12),transparent_30%),linear-gradient(180deg,hsl(220_20%_6%_/_0.72),hsl(220_20%_6%_/_0.96))]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_75%_35%,hsl(174_72%_50%_/_0.13),transparent_30%),linear-gradient(180deg,hsl(220_20%_6%_/_0.7),hsl(220_20%_6%_/_0.98))]" />
         <div className="hero-grid absolute inset-0 opacity-40" />
       </div>
 
       <div className="container relative z-10 mx-auto px-5 pb-20 pt-28 sm:px-6 lg:pb-28 lg:pt-36 print:py-4">
-        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.05fr)_minmax(380px,0.95fr)] lg:gap-20">
+        <div className="grid items-center gap-14 lg:grid-cols-[minmax(0,1.02fr)_minmax(430px,0.98fr)] lg:gap-16">
           <div className="max-w-3xl print:max-w-none">
-            <p className="mb-5 font-mono text-xs font-semibold uppercase tracking-[0.24em] text-primary sm:text-sm">
-              IT Operations / Automation Testing
-            </p>
+            <div className="mb-5 flex items-center gap-3 font-mono text-xs font-semibold uppercase tracking-[0.22em] text-primary sm:text-sm">
+              <span className="relative flex h-3 w-3 items-center justify-center">
+                <span className="absolute h-3 w-3 animate-ping rounded-full bg-primary/30" />
+                <span className="relative h-1.5 w-1.5 rounded-full bg-primary shadow-[0_0_12px_hsl(174_72%_50%_/_0.9)]" />
+              </span>
+              System status: online
+            </div>
 
-            <h1 className="max-w-3xl text-5xl font-bold leading-[0.96] tracking-tight text-foreground sm:text-7xl lg:text-8xl print:text-4xl">
+            <h1 className="max-w-3xl text-5xl font-bold leading-[0.94] tracking-tight text-foreground sm:text-7xl lg:text-8xl print:text-4xl">
               <span className="block text-primary text-glow-strong">Mourya</span>
               <span className="block">Monavarty</span>
             </h1>
 
-            <p className="mt-7 max-w-2xl text-xl leading-relaxed text-muted-foreground sm:text-2xl print:mt-2 print:text-base">
-              I build reliable systems, streamline IT operations, and create resilient Playwright-based automation for real-world environments.
+            <p className="mt-7 max-w-2xl text-xl font-medium leading-relaxed text-primary/90 sm:text-2xl print:mt-2 print:text-base">
+              IT Operations &amp; Test Automation
+            </p>
+
+            <p className="mt-3 max-w-2xl text-xl leading-relaxed text-muted-foreground sm:text-2xl print:mt-2 print:text-base">
+              I build systems that stay up—and tests that prove it.
             </p>
 
             <p className="mt-5 max-w-2xl text-base leading-7 text-secondary-foreground/85 print:mt-2 print:text-sm">
@@ -159,15 +196,19 @@ const HeroSection = () => {
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true, amount: 0.25 }}
             transition={{ duration: 0.75, delay: 0.1 }}
-            className="relative mx-auto w-full max-w-xl print:hidden"
+            className="relative mx-auto w-full max-w-2xl print:hidden"
           >
-            <div className="absolute -inset-8 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
+            <div className="pointer-events-none absolute -inset-8 rounded-full bg-primary/10 blur-3xl" aria-hidden="true" />
             <div className="relative grid grid-cols-[minmax(0,1fr)_132px] items-center gap-4 sm:gap-6">
-              <motion.div
-                whileHover={{ y: -5 }}
-                className="relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/55 bg-card/80 shadow-[0_0_50px_hsl(174_72%_50%_/_0.2)]"
+              <div
+                className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/55 bg-card/80 shadow-[0_0_50px_hsl(174_72%_50%_/_0.2)]"
+                onPointerMove={handlePointerMove}
+                onPointerEnter={() => setRevealActive(true)}
+                onPointerLeave={handlePointerLeave}
+                style={{ "--reveal-x": `${pointerX}%` } as CSSProperties}
               >
-                <div className="absolute inset-0 bg-gradient-to-t from-background/55 via-transparent to-primary/10" />
+                <div className="absolute inset-0 bg-gradient-to-t from-background/65 via-transparent to-primary/10" />
+                <div className="absolute inset-0 bg-[linear-gradient(hsl(174_72%_50%_/_0.09)_1px,transparent_1px),linear-gradient(90deg,hsl(174_72%_50%_/_0.09)_1px,transparent_1px)] [background-size:28px_28px] opacity-60" />
                 <picture className="block h-full w-full">
                   <source media="(max-width: 640px)" type="image/avif" srcSet="/portfolio/profile-480.avif" />
                   <source media="(max-width: 640px)" type="image/webp" srcSet="/portfolio/profile-480.webp" />
@@ -181,14 +222,54 @@ const HeroSection = () => {
                     loading="eager"
                     fetchPriority="high"
                     decoding="async"
-                    sizes="(max-width: 640px) 70vw, 420px"
+                    sizes="(max-width: 640px) 82vw, 460px"
                     className="h-full w-full object-cover object-top"
                   />
                 </picture>
-                <div className="absolute bottom-4 left-4 rounded-full border border-primary/25 bg-background/80 px-3 py-1.5 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md">
-                  Systems / QA
+
+                <div
+                  className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(115deg,hsl(220_20%_6%_/_0.92),hsl(220_20%_6%_/_0.56))] transition-[clip-path] duration-500 ease-out"
+                  style={revealStyle}
+                  aria-hidden="true"
+                />
+                <div
+                  className="pointer-events-none absolute inset-y-0 z-20 w-px bg-primary shadow-[0_0_20px_hsl(174_72%_50%_/_0.95)] transition-[left] duration-150"
+                  style={{ left: `${pointerX}%` }}
+                  aria-hidden="true"
+                />
+                <div className="pointer-events-none absolute inset-0 z-20 opacity-30 [background-image:repeating-linear-gradient(0deg,transparent,transparent_3px,hsl(174_72%_50%_/_0.12)_4px)]" aria-hidden="true" />
+
+                <div className="absolute left-5 top-5 z-30 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                  <div className="flex items-center gap-2">
+                    <ScanLine className="h-4 w-4" />
+                    System reveal
+                  </div>
+                  <div className="mt-2 flex gap-1.5 opacity-70" aria-hidden="true">
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary/50" />
+                    <span className="h-1.5 w-1.5 rounded-full bg-primary/20" />
+                  </div>
                 </div>
-              </motion.div>
+
+                <div className="absolute left-5 top-24 z-30 space-y-2">
+                  <div className="flex items-center gap-2 rounded-lg border border-primary/25 bg-background/70 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-primary backdrop-blur-md">
+                    <Fingerprint className="h-4 w-4" />
+                    Identity verified
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg border border-primary/25 bg-background/70 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-primary backdrop-blur-md">
+                    <ShieldCheck className="h-4 w-4" />
+                    Automation ready
+                  </div>
+                  <div className="flex items-center gap-2 rounded-lg border border-amber-300/35 bg-amber-300/[0.08] px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-amber-200 backdrop-blur-md">
+                    <CheckCircle2 className="h-4 w-4" />
+                    3 checks passed
+                  </div>
+                </div>
+
+                <div className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md">
+                  {revealActive ? "Identity verified" : "Hover to initialize"}
+                </div>
+              </div>
 
               <div className="space-y-3">
                 <div className="rounded-xl border border-primary/20 bg-card/80 p-3 backdrop-blur-md">
@@ -212,6 +293,16 @@ const HeroSection = () => {
                 </div>
               </div>
             </div>
+
+            <button
+              type="button"
+              aria-pressed={revealActive}
+              onClick={() => setRevealActive((active) => !active)}
+              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/25 bg-primary/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary transition hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
+            >
+              <ScanLine className="h-4 w-4" />
+              {revealActive ? "Reset system reveal" : "Tap to initialize reveal"}
+            </button>
           </motion.div>
         </div>
       </div>

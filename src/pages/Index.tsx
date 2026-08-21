@@ -9,7 +9,7 @@ const SectionFallback = () => (
   <div className="h-40 w-full animate-pulse rounded-lg bg-secondary/30 md:h-56" aria-hidden="true" />
 );
 
-const DeferredSection = ({ load }: { load: SectionLoader }) => {
+const DeferredSection = ({ id, load }: { id: string; load: SectionLoader }) => {
   const [target, setTarget] = useState<HTMLDivElement | null>(null);
   const [Section, setSection] = useState<ComponentType | null>(null);
 
@@ -46,7 +46,7 @@ const DeferredSection = ({ load }: { load: SectionLoader }) => {
     };
   }, [Section, load, target]);
 
-  return <div ref={setTarget}>{Section ? <Section /> : <SectionFallback />}</div>;
+  return <div id={Section ? undefined : id} ref={setTarget}>{Section ? <Section /> : <SectionFallback />}</div>;
 };
 
 const Index = () => {
@@ -61,11 +61,11 @@ const Index = () => {
       <Navbar />
       <main id="main-content">
         <HeroSection />
-        <DeferredSection load={() => import("@/components/ExperienceSection")} />
-        <DeferredSection load={() => import("@/components/ProjectsSection")} />
-        <DeferredSection load={() => import("@/components/SkillsSection")} />
-        <DeferredSection load={() => import("@/components/EducationSection")} />
-        <DeferredSection load={() => import("@/components/ContactSection")} />
+        <DeferredSection id="experience" load={() => import("@/components/ExperienceSection")} />
+        <DeferredSection id="projects" load={() => import("@/components/ProjectsSection")} />
+        <DeferredSection id="skills" load={() => import("@/components/SkillsSection")} />
+        <DeferredSection id="education" load={() => import("@/components/EducationSection")} />
+        <DeferredSection id="contact" load={() => import("@/components/ContactSection")} />
       </main>
     </div>
   );
