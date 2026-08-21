@@ -247,7 +247,10 @@ const HeroSection = () => {
                 </div>
                 <div className="pointer-events-none absolute inset-0 z-20 opacity-30 [background-image:repeating-linear-gradient(0deg,transparent,transparent_3px,hsl(174_72%_50%_/_0.12)_4px)]" aria-hidden="true" />
 
-                <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md lg:block">
+                <div
+                  aria-hidden={revealActive}
+                  className={`absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md transition-[opacity,transform] duration-300 lg:block ${revealActive ? "pointer-events-none scale-95 opacity-0" : "scale-100 opacity-100"}`}
+                >
                   Hover to reveal
                 </div>
               </div>
@@ -275,15 +278,19 @@ const HeroSection = () => {
               </div>
             </div>
 
-            <button
-              type="button"
-              aria-pressed={revealActive}
-              onClick={handleMobileReveal}
-              className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/25 bg-primary/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary transition hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
-            >
-              <ScanLine className="h-4 w-4" />
-              {revealActive ? "Reset system reveal" : "Tap to initialize reveal"}
-            </button>
+            <div className="mt-4 min-h-10 lg:hidden">
+              {!revealActive ? (
+                <button
+                  type="button"
+                  aria-pressed={revealActive}
+                  onClick={handleMobileReveal}
+                  className="inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/25 bg-primary/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary transition hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                >
+                  <ScanLine className="h-4 w-4" />
+                  Tap to initialize reveal
+                </button>
+              ) : null}
+            </div>
           </motion.div>
         </div>
       </div>
