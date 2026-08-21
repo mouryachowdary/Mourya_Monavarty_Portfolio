@@ -1,8 +1,8 @@
 export const personalInfo = {
   name: "Mourya Monavarty",
-  title: "IT Operations & Test Automation",
+  title: "IT Operations & Test Automation Engineer",
   summary:
-    "Experienced IT & Systems support engineer with a strong background in server management, network administration, and IT asset management. Skilled in optimizing system performance and enhancing security through proactive monitoring and maintenance. Currently expanding expertise in automation testing (Playwright, TypeScript, API testing) and actively seeking opportunities in both Infrastructure Engineering and SDET roles, where I can leverage my operational experience alongside automation skills to deliver reliable and scalable systems.",
+    "IT Operations and Test Automation Engineer with 6+ years of experience in enterprise infrastructure management, system reliability, and automated quality assurance. Expert in administering Microsoft 365, Intune, and Windows Server environments for 500+ endpoints while maintaining 99.5% availability SLAs. Proficient in building resilient end-to-end automation frameworks using Playwright and TypeScript to streamline software delivery and operational efficiency.",
   highlights: [
     "6+ years in enterprise IT operations",
     "500+ endpoints managed",
@@ -18,26 +18,26 @@ export const personalInfo = {
 export const experiences = [
   {
     number: "01",
-    title: "IT & Systems Admin",
+    title: "IT & Systems Administrator",
     company: "Thuro, Sails Software Inc",
-    Location: "Visakhapatnam",
-    period: "Apr 2026 - present",
+    Location: "Visakhapatnam, India",
+    period: "Apr 2026 - Present",
     tasks: [
-      "Managed user provisioning, access control, and license administration across Microsoft 365 and Entra ID",
-      "Administered Microsoft Intune for device enrollment, compliance, app deployment, and endpoint management",
-      "Supported SOC 2 compliance by remediating Vanta findings and maintaining audit readiness",
-      "Managed Exchange Online mailboxes, distribution lists, permissions, and mail flow troubleshooting",
-      "Administered Microsoft Teams, including user access, collaboration settings, and Teams Phone support",
-      "Monitored Microsoft Defender security alerts and resolved endpoint compliance and security issues",
-      "Resolved P1–P4 incidents and service requests while consistently meeting SLA targets",
-      "Automated IT workflows and email notifications using Power Automate to improve operational efficiency",
-      "Managed IT asset lifecycle, inventory, and documentation using Snipe-IT and Intune",
-      "Authored SOPs and technical documentation for IT operations, onboarding, and security processes",
-      "Provided L1/L2 technical support for Windows, Microsoft 365, and endpoint management issues",
-      "Managed Keeper Enterprise user onboarding and monitored BreachWatch security recommendations",
-      "Automating IT workflows using PowerShell scripts to reduce manual administrative effort",
-      "Maintaining IT asset documentation and audit trails for compliance and governance readiness",
-      "Coordinated device provisioning, replacement, reset, and vendor repair activities throughout the hardware lifecycle",
+      "Orchestrate user provisioning, access control, and license administration across Microsoft 365 and Entra ID (Azure AD) for enterprise-scale operations.",
+      "Administer Microsoft Intune for automated device enrollment, compliance monitoring, and application deployment across 500+ managed endpoints.",
+      "Drive SOC 2 compliance initiatives by remediating Vanta security findings and maintaining continuous audit readiness for infrastructure and operations.",
+      "Manage Exchange Online infrastructure, including mailbox permissions, distribution lists, and complex mail flow troubleshooting to ensure zero communication downtime.",
+      "Oversee Microsoft Teams administration, including collaboration governance, user access, and Teams Phone system support.",
+      "Monitor Microsoft Defender security alerts to proactively resolve endpoint compliance issues and mitigate potential security threats.",
+      "Resolve P1-P4 technical incidents and service requests while consistently exceeding established SLA targets and operational benchmarks.",
+      "Automate repetitive IT workflows and notification systems using Power Automate, reducing manual administrative effort by 30%.",
+      "Manage the full IT asset lifecycle, inventory tracking, and technical documentation using Snipe-IT and Microsoft Intune.",
+      "Author comprehensive SOPs and technical documentation for IT operations, security protocols, and employee onboarding processes.",
+      "Provide Tier 2 technical support for Windows, Microsoft 365, and endpoint management, maintaining a 95% first-call resolution rate.",
+      "Manage Keeper Enterprise security onboarding and monitor BreachWatch recommendations to enhance organizational credential security.",
+      "Develop PowerShell scripts to automate complex IT administrative tasks and reduce human error in system configuration.",
+      "Maintain rigorous IT asset documentation and audit trails to ensure compliance with corporate governance and regulatory requirements.",
+      "Coordinate hardware lifecycle activities, including device provisioning, vendor repairs, and secure asset decommissioning.",
     ],
     tags: [
       "Microsoft 365",
@@ -54,19 +54,20 @@ export const experiences = [
     number: "02",
     title: "IT & Systems Support Engineer",
     company: "CSI WEB, Sails Software Inc",
-    Location: "Visakhapatnam",
+    Location: "Visakhapatnam, India",
     period: "Aug 2022 - Apr 2026",
     tasks: [
-      "Administered and optimized 50+ Windows Server 2012–2022 instances across prod and staging",
-      "Deployed OS images, software packages, and compliance baselines to 500+ endpoints via SCCM",
-      "Implemented SCOM monitoring for 100+ servers with alerts and dashboards for proactive resolution",
-      "Managed monthly security patch cycles using Ivanti and WSUS, maintaining 98% patch compliance",
-      "Administered Active Directory (users, GPOs, OUs) and VMware ESXi/vSphere environments",
-      "Configured and maintained DNS, DHCP, and File Server roles on Windows Server infrastructure",
-      "Resolved 200+ incidents and change requests via ServiceNow following ITIL best practices",
-      "Automated routine maintenance using PowerShell scripts, reducing manual effort by 40%",
-      "Monitored server health via SCOM dashboards, achieving 99.5% availability SLA",
-      "Managed Azure AD synchronization and hybrid identity for seamless cloud integration",
+      "Administered and optimized 50+ Windows Server (2012-2022) instances across production and staging environments to ensure high availability.",
+      "Managed OS imaging, software packaging, and compliance baseline deployments to 500+ endpoints using SCCM (MECM).",
+      "Implemented SCOM monitoring for 100+ servers, developing custom alerts and dashboards for proactive system health resolution.",
+      "Executed monthly security patch cycles using Ivanti and WSUS, consistently maintaining a 98% patch compliance rate across the infrastructure.",
+      "Administered Active Directory (AD) environments, including GPO management, OU structuring, and user identity governance.",
+      "Managed VMware ESXi and vSphere virtualization environments, ensuring efficient resource allocation and virtual machine stability.",
+      "Configured and maintained critical infrastructure roles including DNS, DHCP, and File Servers on Windows Server platforms.",
+      "Resolved 200+ complex incidents and change requests via ServiceNow, adhering to ITIL best practices and service level agreements.",
+      "Automated routine server maintenance and reporting using PowerShell scripts, reducing manual operational effort by 40%.",
+      "Monitored real-time server health via SCOM, contributing to the achievement of a 99.5% system availability SLA.",
+      "Managed Azure AD synchronization and hybrid identity infrastructure to enable seamless cloud integration and single sign-on (SSO).",
     ],
     tags: [
       "Windows Server",
@@ -83,16 +84,17 @@ export const experiences = [
     number: "03",
     title: "IT & Network Support Associate",
     company: "Sails Software Inc",
-    Location: "Visakhapatnam",
+    Location: "Visakhapatnam, India",
     period: "Apr 2020 - Jul 2022",
     tasks: [
-      "Configured and maintained Cisco switches, routers, wireless APs, and Sophos XG Firewall (200+ users)",
-      "Tracked and managed 200+ IT assets via Snipe-IT, ensuring accurate inventory for audit readiness",
-      "Executed IMAC (Install, Move, Add, Change) activities for desktops and laptops organization-wide",
-      "Installed, configured, and maintained Windows, Linux, and macOS operating systems",
-      "Provided Tier-2/Tier-3 technical support with 95% first-call resolution rate",
-      "Monitored LAN/WAN performance and bandwidth utilization, resolving issues to minimize downtime",
-      "Documented network topology diagrams and maintained standardized asset inventory for compliance",
+      "Configured and maintained Cisco networking hardware, including switches, routers, and wireless access points for 200+ concurrent users.",
+      "Administered Sophos XG Firewall to ensure perimeter security, VPN connectivity, and network traffic optimization.",
+      "Tracked and managed 200+ IT assets via Snipe-IT, ensuring 100% accuracy in inventory for internal and external audits.",
+      "Executed IMAC (Install, Move, Add, Change) activities for desktops, laptops, and peripherals across the organization.",
+      "Installed, configured, and maintained multi-platform operating systems including Windows, Linux (Ubuntu/CentOS), and macOS.",
+      "Provided Tier 2 and Tier 3 technical support with a 95% first-call resolution rate, significantly improving user satisfaction scores.",
+      "Monitored LAN/WAN performance and bandwidth utilization, identifying and resolving bottlenecks to minimize network downtime.",
+      "Documented detailed network topology diagrams and maintained standardized asset inventory for compliance and troubleshooting.",
     ],
     tags: [
       "TCP/IP",
@@ -109,55 +111,60 @@ export const experiences = [
 
 export const projects = [
   {
-    title: "Medicare Booking Automation",
+    title: "Medicare Booking Automation Suite",
     description: [
-      "End-to-end automation using Playwright for booking workflows and validation."
+      "Developed a comprehensive end-to-end (E2E) automation framework using Playwright and TypeScript to validate complex healthcare booking workflows.",
+      "Implemented Page Object Model (POM) architecture to ensure test maintainability, reusability, and scalability across multiple environments.",
+      "Integrated automated API validation checks to ensure data integrity between the frontend UI and backend services.",
     ],
-    tags: ["Playwright", "TypeScript", "E2E"],
-    github: "https://github.com/mouryachowdary/MedSchedule-Project-Playwright.git"
+    tags: ["Playwright", "TypeScript", "E2E Testing", "POM", "API Validation"],
+    github: "https://github.com/mouryachowdary/MedSchedule-Project-Playwright.git",
   },
   {
-    title: "Medicare Appointment booking App",
+    title: "Medicare Appointment Booking Application",
     description: [
-      "UI-based healthcare booking simulator."
+      "Designed and built a full-stack healthcare booking simulator to demonstrate user flow optimization and patient scheduling logic.",
+      "Focused on creating a responsive and accessible UI to ensure a seamless booking experience across different device types.",
     ],
-    tags: ["Healthcare", "Appointment Booking", "Patient Scheduling", "Booking System", "User Flow"],
+    tags: ["React", "TypeScript", "Healthcare IT", "User Experience", "Scheduling Logic"],
     live: "https://medicare-appointmentbooking-app.vercel.app/",
-    github: "https://github.com/mouryachowdary/medicare-appointmentbooking-app.git"
+    github: "https://github.com/mouryachowdary/medicare-appointmentbooking-app.git",
   },
   {
-    title: "Portfolio",
+    title: "Professional Engineering Portfolio",
     description: [
-      "Developed a responsive portfolio website using React, TypeScript, and Tailwind CSS, integrated with Framer Motion for seamless animations and interactions, to effectively showcase work experiences, projects and technical skills."
-      ],
-    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Responsive Design", "UI/UX", "Frontend Development"],
+      "Architected a high-performance personal brand platform using React, TypeScript, and Tailwind CSS to showcase technical expertise and project evidence.",
+      "Integrated Framer Motion for cinematic interactions and optimized asset delivery (AVIF/WebP) to achieve high Lighthouse performance scores.",
+    ],
+    tags: ["React", "TypeScript", "Tailwind CSS", "Framer Motion", "Web Performance", "UI/UX"],
     live: "https://mouryamonavarty.vercel.app/",
-    github: "https://github.com/mouryachowdary/Mourya_Monavarty_Portfolio.git"
+    github: "https://github.com/mouryachowdary/Mourya_Monavarty_Portfolio.git",
   },
   {
     title: "Aurora Theme Extension for Chrome",
     description: [
-      "Designed a Chrome browser extension that transforms the browsing experience with a vibrant Aurora-inspired UI theme, with Live Wallpaper and GIF/Image Support."
+      "Developed a browser extension that enhances user experience with a vibrant, Aurora-inspired UI theme and live wallpaper support.",
+      "Leveraged JavaScript and CSS to create a lightweight, performant extension with customizable GIF and image backgrounds.",
     ],
-    tags: ["Chrome Extension", "UI Theme", "Web Extension", "JavaScript", "CSS", "Browser UX", "Live Wallpaper Support", "GIF/Image Support"],
+    tags: ["Chrome Extension", "JavaScript", "CSS", "Browser UX", "UI Design"],
     previewImage: "/aurora-preview.png",
-    github: "https://github.com/mouryachowdary/Aurora-Extension-UI-for-Chrome.git"
-  }
+    github: "https://github.com/mouryachowdary/Aurora-Extension-UI-for-Chrome.git",
+  },
 ];
 
 export const skillGroups = [
   {
     title: "System Administration",
     skills: [
-      "Office365",
+      "Microsoft 365 / Office 365",
       "Active Directory & GPO",
-      "Windows Server",
-      "VMware vSphere/ESXi",
+      "Windows Server (2012-2022)",
+      "VMware vSphere / ESXi",
       "Backup & Disaster Recovery",
       "RDP & Remote Access",
       "Sysinternals",
-      "Microsoft Intune",
-      "Vanta",
+      "Microsoft Intune (MDM/MAM)",
+      "Vanta Compliance",
     ],
   },
   {
@@ -165,65 +172,65 @@ export const skillGroups = [
     skills: [
       "LAN/WAN & TCP/IP",
       "DNS & DHCP",
-      "Routing & Switching",
+      "Routing & Switching (Cisco)",
       "VPN & Remote Connectivity",
-      "Wireless Networks & Access Points",
+      "Wireless Networks & APs",
       "Network Monitoring & Troubleshooting",
     ],
   },
   {
     title: "Security & ITSM",
     skills: [
-      "Patch Management",
-      "Identity & Access Management",
+      "Patch Management (Ivanti/WSUS)",
+      "Identity & Access Management (IAM)",
       "Incident & Change Management",
       "SLA Management",
-      "Network Access Control",
-      "Agile/Scrum",
+      "Network Access Control (NAC)",
+      "Agile / Scrum Methodology",
     ],
   },
   {
     title: "Languages & Automation",
     skills: [
-      "TypeScript",
-      "PowerShell & Bash",
-      "C/C++",
+      "TypeScript / JavaScript",
+      "PowerShell & Bash Scripting",
+      "C / C++",
       "Playwright (POM)",
       "API Testing & Manual Testing",
-      "Git/GitHub",
+      "Git / GitHub",
       "Postman",
     ],
   },
   {
     title: "OS & Platforms",
     skills: [
-      "Windows XP-11",
-      "Windows Server (2012 R2-2022)",
-      "Linux",
-      "MacOS",
+      "Windows (XP-11)",
+      "Windows Server",
+      "Linux (Ubuntu/CentOS)",
+      "macOS",
       "Microsoft Azure",
     ],
   },
   {
     title: "Tools & Software",
     skills: [
-      "Microsoft Office",
-      "SCCM / WSUS",
-      "SCOM",
+      "Microsoft Office Suite",
+      "SCCM / MECM",
+      "SCOM Monitoring",
       "ServiceNow / Jira",
-      "Snipe-IT",
+      "Snipe-IT Asset Management",
       "Adobe Creative Cloud",
-      "Ivanti",
+      "Ivanti Security",
     ],
   },
   {
     title: "AI & Automation",
     skills: [
       "Prompt Engineering",
-      "ChatGPT / GitHub Copilot / Codex",
+      "GitHub Copilot / ChatGPT",
       "Cursor / Lovable",
       "AI-Assisted Testing",
-      "Test Case Generation Using AI",
+      "Test Case Generation",
     ],
   },
   {
@@ -246,7 +253,7 @@ export const education = [
 ];
 
 export const howIWork = [
-  "I combine infrastructure expertise with automation testing to build reliable, scalable systems. My approach focuses on real-world scenarios, ensuring applications perform seamlessly under actual conditions.",
-  "I design maintainable automation frameworks (Playwright + TypeScript) with a strong emphasis on stability, reusability, and efficient execution. At the same time, I apply my infrastructure knowledge to ensure system performance, monitoring, and reliability are never compromised.",
-  "I believe in automation that adds real value, proactive problem-solving, and continuously improving both system quality and engineering efficiency.",
+  "I bridge the gap between infrastructure stability and automated quality assurance. My approach focuses on building reliable, scalable systems that perform seamlessly under real-world enterprise conditions.",
+  "I design maintainable automation frameworks using Playwright and TypeScript, emphasizing stability, reusability, and efficient execution. I leverage my deep infrastructure knowledge to ensure system performance and monitoring are never compromised.",
+  "I am committed to automation that delivers measurable value, proactive problem-solving, and the continuous improvement of both system quality and engineering efficiency.",
 ];
