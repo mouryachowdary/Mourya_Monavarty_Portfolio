@@ -250,7 +250,7 @@ const HeroSection = () => {
                 <div className="absolute left-5 top-5 z-30 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                   <div className="flex items-center gap-2">
                     <ScanLine className="h-4 w-4" />
-                    Blueprint morph
+                    System reveal
                   </div>
                   <div className="mt-2 flex gap-1.5 opacity-70" aria-hidden="true">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -261,7 +261,7 @@ const HeroSection = () => {
 
 
                 <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md lg:block">
-                  {revealActive ? "Model verified" : "Align blueprint"}
+                  {revealActive ? "Identity verified" : "Hover to initialize"}
                 </div>
               </div>
 
@@ -295,7 +295,7 @@ const HeroSection = () => {
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/25 bg-primary/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary transition hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
             >
               <ScanLine className="h-4 w-4" />
-              {revealActive ? "Reset blueprint morph" : "Tap to align blueprint"}
+              {revealActive ? "Reset system reveal" : "Tap to initialize reveal"}
             </button>
           </motion.div>
         </div>
