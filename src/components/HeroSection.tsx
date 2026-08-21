@@ -5,9 +5,7 @@ import {
   Activity,
   ArrowDownRight,
   ArrowUpRight,
-  CheckCircle2,
   Download,
-  Fingerprint,
   ScanLine,
   Server,
   ShieldCheck,
@@ -242,20 +240,6 @@ const HeroSection = () => {
                   </div>
                 </div>
 
-                <div className="absolute left-5 top-24 z-30 space-y-2">
-                  <div className="flex items-center gap-2 rounded-lg border border-primary/25 bg-background/70 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-primary backdrop-blur-md">
-                    <Fingerprint className="h-4 w-4" />
-                    Identity verified
-                  </div>
-                  <div className="flex items-center gap-2 rounded-lg border border-primary/25 bg-background/70 px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-primary backdrop-blur-md">
-                    <ShieldCheck className="h-4 w-4" />
-                    Automation ready
-                  </div>
-                  <div className="flex items-center gap-2 rounded-lg border border-amber-300/35 bg-amber-300/[0.08] px-3 py-2 font-mono text-[10px] uppercase tracking-wider text-amber-200 backdrop-blur-md">
-                    <CheckCircle2 className="h-4 w-4" />
-                    3 checks passed
-                  </div>
-                </div>
 
                 <div className="absolute bottom-5 left-1/2 z-30 -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md">
                   {revealActive ? "Identity verified" : "Hover to initialize"}
