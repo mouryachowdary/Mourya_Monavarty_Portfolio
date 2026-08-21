@@ -47,6 +47,7 @@ const metrics = [
 const HeroSection = () => {
   const [showBackgroundImage, setShowBackgroundImage] = useState(false);
   const [revealActive, setRevealActive] = useState(false);
+  const [scannerActive, setScannerActive] = useState(false);
   const [pointerX, setPointerX] = useState(50);
 
   useEffect(() => {
@@ -65,14 +66,33 @@ const HeroSection = () => {
     generateResume();
   };
 
+  const startReveal = () => {
+    if (revealActive && scannerActive) return;
+    setRevealActive(true);
+    setPointerX(10);
+    setScannerActive(true);
+    window.setTimeout(() => setPointerX(90), 50);
+    window.setTimeout(() => setScannerActive(false), 1100);
+  };
+
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "touch") return;
+    if (event.pointerType === "touch" || scannerActive) return;
     const bounds = event.currentTarget.getBoundingClientRect();
     setPointerX(Math.max(10, Math.min(90, ((event.clientX - bounds.left) / bounds.width) * 100)));
   };
 
   const handleRevealStart = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType !== "touch") setRevealActive(true);
+    if (event.pointerType !== "touch") startReveal();
+  };
+
+  const handleMobileReveal = () => {
+    if (revealActive) {
+      setRevealActive(false);
+      setScannerActive(false);
+      setPointerX(50);
+      return;
+    }
+    startReveal();
   };
 
   const revealStyle = {
@@ -203,7 +223,7 @@ const HeroSection = () => {
                 className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/55 bg-card/80 shadow-[0_0_50px_hsl(174_72%_50%_/_0.2)]"
                 onPointerMove={handlePointerMove}
                 onPointerEnter={handleRevealStart}
-                onFocus={() => setRevealActive(true)}
+                onFocus={startReveal}
                 tabIndex={0}
                 aria-label="System reveal portrait. Hover or focus to initialize the reveal."
                 style={{ "--reveal-x": `${pointerX}%` } as CSSProperties}
@@ -234,8 +254,8 @@ const HeroSection = () => {
                   aria-hidden="true"
                 />
                 <div
-                  className="pointer-events-none absolute inset-y-0 z-20 w-px bg-primary shadow-[0_0_20px_hsl(174_72%_50%_/_0.95)] transition-[left] duration-150"
-                  style={{ left: `${pointerX}%` }}
+                  className="pointer-events-none absolute inset-y-0 z-20 w-px bg-primary shadow-[0_0_20px_hsl(174_72%_50%_/_0.95)] transition-[left,opacity] duration-300"
+                  style={{ left: `${pointerX}%`, opacity: scannerActive ? 1 : 0 }}
                   aria-hidden="true"
                 />
                 <div className="pointer-events-none absolute inset-0 z-20 opacity-30 [background-image:repeating-linear-gradient(0deg,transparent,transparent_3px,hsl(174_72%_50%_/_0.12)_4px)]" aria-hidden="true" />
@@ -298,7 +318,7 @@ const HeroSection = () => {
             <button
               type="button"
               aria-pressed={revealActive}
-              onClick={() => setRevealActive((active) => !active)}
+              onClick={handleMobileReveal}
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/25 bg-primary/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary transition hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
             >
               <ScanLine className="h-4 w-4" />
