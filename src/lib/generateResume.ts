@@ -76,23 +76,20 @@ export function generateResume() {
   const contactLine = `${personalInfo.email}  |  ${personalInfo.phone}  |  ${personalInfo.location}`;
   doc.text(contactLine, MARGIN, y);
   y += 4.5;
-  // LinkedIn as clickable link
+
   doc.setTextColor(0, 0, 180);
-  doc.textWithLink(personalInfo.linkedin, MARGIN, y, {
-    url: personalInfo.linkedin,
-  });
-  // Portfolio link on the same line
-  const linkedinWidth = doc.getTextWidth(personalInfo.linkedin);
+  doc.textWithLink("LinkedIn", MARGIN, y, { url: personalInfo.linkedin });
+  const linkedInLabelWidth = doc.getTextWidth("LinkedIn");
   const separator = "  |  ";
   doc.setTextColor(...GRAY);
-  doc.text(separator, MARGIN + linkedinWidth, y);
-  const sepWidth = doc.getTextWidth(separator);
+  doc.text(separator, MARGIN + linkedInLabelWidth, y);
+  const separatorWidth = doc.getTextWidth(separator);
   doc.setTextColor(0, 0, 180);
-  doc.textWithLink(personalInfo.portfolio, MARGIN + linkedinWidth + sepWidth, y, {
+  doc.textWithLink("Portfolio Website", MARGIN + linkedInLabelWidth + separatorWidth, y, {
     url: personalInfo.portfolio,
   });
   doc.setTextColor(...DARK);
-  y += 5;
+  y += 8;
 
   // === PROFESSIONAL SUMMARY (keep together) ===
   doc.setFont("helvetica", "normal");
