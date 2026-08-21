@@ -69,11 +69,10 @@ const HeroSection = () => {
     if (event.pointerType === "touch") return;
     const bounds = event.currentTarget.getBoundingClientRect();
     setPointerX(Math.max(10, Math.min(90, ((event.clientX - bounds.left) / bounds.width) * 100)));
-    setRevealActive(true);
   };
 
-  const handlePointerLeave = (event: PointerEvent<HTMLDivElement>) => {
-    if (event.pointerType === "mouse") setRevealActive(false);
+  const handleRevealStart = (event: PointerEvent<HTMLDivElement>) => {
+    if (event.pointerType !== "touch") setRevealActive(true);
   };
 
   const revealStyle = {
@@ -203,8 +202,10 @@ const HeroSection = () => {
               <div
                 className="group relative aspect-[4/5] overflow-hidden rounded-2xl border border-primary/55 bg-card/80 shadow-[0_0_50px_hsl(174_72%_50%_/_0.2)]"
                 onPointerMove={handlePointerMove}
-                onPointerEnter={() => setRevealActive(true)}
-                onPointerLeave={handlePointerLeave}
+                onPointerEnter={handleRevealStart}
+                onFocus={() => setRevealActive(true)}
+                tabIndex={0}
+                aria-label="System reveal portrait. Hover or focus to initialize the reveal."
                 style={{ "--reveal-x": `${pointerX}%` } as CSSProperties}
               >
                 <div className="absolute inset-0 bg-gradient-to-t from-background/65 via-transparent to-primary/10" />
