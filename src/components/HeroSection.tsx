@@ -247,21 +247,8 @@ const HeroSection = () => {
                 </div>
                 <div className="pointer-events-none absolute inset-0 z-20 opacity-30 [background-image:repeating-linear-gradient(0deg,transparent,transparent_3px,hsl(174_72%_50%_/_0.12)_4px)]" aria-hidden="true" />
 
-                <div className="absolute left-5 top-5 z-30 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
-                  <div className="flex items-center gap-2">
-                    <ScanLine className="h-4 w-4" />
-                    System reveal
-                  </div>
-                  <div className="mt-2 flex gap-1.5 opacity-70" aria-hidden="true">
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary/50" />
-                    <span className="h-1.5 w-1.5 rounded-full bg-primary/20" />
-                  </div>
-                </div>
-
-
                 <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md lg:block">
-                  {revealActive ? "Identity verified" : "Hover to initialize"}
+                  Hover to reveal
                 </div>
               </div>
 
