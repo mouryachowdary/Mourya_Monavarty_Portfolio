@@ -103,23 +103,7 @@ const ProjectsSection = () => {
                     </div>
                   </div>
 
-                  <div className="mb-6 rounded-xl border border-border/70 bg-background/35 p-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
-                    <div className="flex items-center justify-between gap-3">
-                      <span>Validation suite</span>
-                      <span className="text-primary">Ready</span>
-                    </div>
-                    <div className="mt-2 h-1 overflow-hidden rounded-full bg-border/70">
-                      <motion.div
-                        initial={{ width: 0 }}
-                        whileInView={{ width: "100%" }}
-                        viewport={{ once: true }}
-                        transition={{ duration: 0.8, delay: 0.2 + i * 0.08 }}
-                        className="h-full rounded-full bg-primary shadow-[0_0_10px_hsl(174_72%_50%_/_0.7)]"
-                      />
-                    </div>
-                  </div>
-
-                  <div className="mb-6 flex flex-wrap gap-2">
+                  <div className="mb-6 flex min-h-14 content-start flex-wrap gap-2">
                     {project.tags.slice(0, 5).map((tag, tagIndex) => (
                       <motion.span
                         key={tag}
@@ -141,7 +125,23 @@ const ProjectsSection = () => {
                     ) : null}
                   </div>
 
-                  <div className="mt-auto flex flex-wrap items-center gap-2 border-t border-border/70 pt-5">
+                  <div className="mt-auto mb-6 shrink-0 rounded-xl border border-border/70 bg-background/35 p-3 font-mono text-[10px] uppercase tracking-[0.16em] text-muted-foreground">
+                    <div className="flex items-center justify-between gap-3">
+                      <span>Validation suite</span>
+                      <span className="text-primary">Ready</span>
+                    </div>
+                    <div className="mt-2 h-1 overflow-hidden rounded-full bg-border/70">
+                      <motion.div
+                        initial={{ width: 0 }}
+                        whileInView={{ width: "100%" }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.2 + i * 0.08 }}
+                        className="h-full rounded-full bg-primary shadow-[0_0_10px_hsl(174_72%_50%_/_0.7)]"
+                      />
+                    </div>
+                  </div>
+
+                  <div className="flex shrink-0 flex-wrap items-center gap-2 border-t border-border/70 pt-5">
                     {project.live && (
                       <motion.a
                         href={project.live}
