@@ -70,10 +70,10 @@ const HeroSection = () => {
 
   const handleMobileReveal = () => setRevealActive((active) => !active);
 
-  const revealStyle = {
-    clipPath: revealActive
-      ? "polygon(0 0, 18% 0, 12% 100%, 0 100%)"
-      : "polygon(0 0, 52% 0, 46% 100%, 0 100%)",
+  const portraitStyle = {
+    filter: revealActive ? "saturate(1) contrast(1)" : "saturate(0.5) contrast(1.08)",
+    opacity: revealActive ? 1 : 0.68,
+    transform: revealActive ? "scale(1)" : "scale(1.015)",
   } as CSSProperties;
 
   return (
@@ -217,21 +217,31 @@ const HeroSection = () => {
                     fetchPriority="high"
                     decoding="async"
                     sizes="(max-width: 640px) 82vw, 460px"
-                    className="h-full w-full object-cover object-top"
+                    className="h-full w-full object-cover object-top transition-[filter,opacity,transform] duration-700 ease-out"
+                    style={portraitStyle}
                   />
                 </picture>
 
                 <div
-                  className="pointer-events-none absolute inset-0 z-10 bg-[linear-gradient(115deg,hsl(220_20%_6%_/_0.92),hsl(220_20%_6%_/_0.56))] transition-[clip-path] duration-500 ease-out"
-                  style={revealStyle}
+                  className={`pointer-events-none absolute inset-0 z-10 transition-[opacity,transform] duration-700 ease-out ${revealActive ? "scale-110 opacity-0" : "scale-100 opacity-100"}`}
                   aria-hidden="true"
-                />
+                >
+                  <div className="absolute inset-0 bg-[linear-gradient(115deg,hsl(220_20%_6%_/_0.72),hsl(220_20%_6%_/_0.3))]" />
+                  <div className="absolute inset-[9%_12%_10%] border border-primary/35 [background-image:linear-gradient(hsl(174_72%_50%_/_0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(174_72%_50%_/_0.1)_1px,transparent_1px)] [background-size:22px_22px]" />
+                  <div className="absolute left-[15%] top-[16%] h-[62%] w-px bg-primary/55 shadow-[0_0_12px_hsl(174_72%_50%_/_0.7)]" />
+                  <div className="absolute right-[15%] top-[16%] h-[62%] w-px bg-primary/55 shadow-[0_0_12px_hsl(174_72%_50%_/_0.7)]" />
+                  <div className="absolute left-1/2 top-[12%] h-[76%] w-px -translate-x-1/2 bg-primary/20" />
+                  <span className="absolute left-[13%] top-[14%] h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_hsl(174_72%_50%_/_0.8)]" />
+                  <span className="absolute right-[13%] top-[14%] h-2 w-2 rounded-full bg-primary shadow-[0_0_12px_hsl(174_72%_50%_/_0.8)]" />
+                  <span className="absolute bottom-[20%] left-[13%] h-2 w-2 rounded-full border border-primary bg-background" />
+                  <span className="absolute bottom-[20%] right-[13%] h-2 w-2 rounded-full border border-primary bg-background" />
+                </div>
                 <div className="pointer-events-none absolute inset-0 z-20 opacity-30 [background-image:repeating-linear-gradient(0deg,transparent,transparent_3px,hsl(174_72%_50%_/_0.12)_4px)]" aria-hidden="true" />
 
                 <div className="absolute left-5 top-5 z-30 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
                   <div className="flex items-center gap-2">
                     <ScanLine className="h-4 w-4" />
-                    System reveal
+                    Blueprint morph
                   </div>
                   <div className="mt-2 flex gap-1.5 opacity-70" aria-hidden="true">
                     <span className="h-1.5 w-1.5 rounded-full bg-primary" />
@@ -242,7 +252,7 @@ const HeroSection = () => {
 
 
                 <div className="absolute bottom-5 left-1/2 z-30 hidden -translate-x-1/2 whitespace-nowrap rounded-full border border-primary/30 bg-background/75 px-4 py-2 font-mono text-[10px] uppercase tracking-[0.18em] text-primary backdrop-blur-md lg:block">
-                  {revealActive ? "Identity verified" : "Hover to initialize"}
+                  {revealActive ? "Model verified" : "Align blueprint"}
                 </div>
               </div>
 
@@ -276,7 +286,7 @@ const HeroSection = () => {
               className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-md border border-primary/25 bg-primary/[0.06] px-4 py-2 font-mono text-[10px] uppercase tracking-[0.16em] text-primary transition hover:border-primary/60 hover:bg-primary/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary lg:hidden"
             >
               <ScanLine className="h-4 w-4" />
-              {revealActive ? "Reset system reveal" : "Tap to initialize reveal"}
+              {revealActive ? "Reset blueprint morph" : "Tap to align blueprint"}
             </button>
           </motion.div>
         </div>
