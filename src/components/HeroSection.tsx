@@ -71,8 +71,8 @@ const HeroSection = () => {
   const handleMobileReveal = () => setRevealActive((active) => !active);
 
   const portraitStyle = {
-    filter: revealActive ? "saturate(1) contrast(1)" : "saturate(0.5) contrast(1.08)",
-    opacity: revealActive ? 1 : 0.68,
+    filter: revealActive ? "saturate(1) contrast(1)" : "brightness(0.2) saturate(0)",
+    opacity: revealActive ? 1 : 0,
     transform: revealActive ? "scale(1)" : "scale(1.015)",
   } as CSSProperties;
 
@@ -222,11 +222,20 @@ const HeroSection = () => {
                   />
                 </picture>
 
+                <img
+                  src="/portfolio/profile-wireframe.webp"
+                  alt=""
+                  aria-hidden="true"
+                  width={768}
+                  height={1152}
+                  className={`pointer-events-none absolute inset-0 z-10 h-full w-full object-cover object-top transition-[opacity,transform] duration-700 ease-out ${revealActive ? "scale-105 opacity-0" : "scale-100 opacity-100"}`}
+                />
+
                 <div
-                  className={`pointer-events-none absolute inset-0 z-10 transition-[opacity,transform] duration-700 ease-out ${revealActive ? "scale-110 opacity-0" : "scale-100 opacity-100"}`}
+                  className={`pointer-events-none absolute inset-0 z-20 transition-[opacity,transform] duration-700 ease-out ${revealActive ? "scale-110 opacity-0" : "scale-100 opacity-100"}`}
                   aria-hidden="true"
                 >
-                  <div className="absolute inset-0 bg-[linear-gradient(115deg,hsl(220_20%_6%_/_0.72),hsl(220_20%_6%_/_0.3))]" />
+                  <div className="absolute inset-0 bg-[linear-gradient(115deg,hsl(220_20%_6%_/_0.22),hsl(220_20%_6%_/_0.08))]" />
                   <div className="absolute inset-[9%_12%_10%] border border-primary/35 [background-image:linear-gradient(hsl(174_72%_50%_/_0.1)_1px,transparent_1px),linear-gradient(90deg,hsl(174_72%_50%_/_0.1)_1px,transparent_1px)] [background-size:22px_22px]" />
                   <div className="absolute left-[15%] top-[16%] h-[62%] w-px bg-primary/55 shadow-[0_0_12px_hsl(174_72%_50%_/_0.7)]" />
                   <div className="absolute right-[15%] top-[16%] h-[62%] w-px bg-primary/55 shadow-[0_0_12px_hsl(174_72%_50%_/_0.7)]" />
