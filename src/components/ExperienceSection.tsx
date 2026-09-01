@@ -97,9 +97,9 @@ const ExperienceSection = () => {
 
                     {additionalTasks.length > 0 && (
                       <details className="group mt-4 print:mt-2 print:block">
-                        <summary className="inline-flex cursor-pointer list-none items-center gap-2 rounded-md border border-border px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-primary [&::-webkit-details-marker]:hidden print:hidden">
+                        <summary className="inline-flex cursor-pointer list-none items-center gap-2 rounded-md border border-border px-3 py-2 text-xs font-semibold text-muted-foreground transition hover:border-primary/40 hover:text-primary group-open:hidden [&::-webkit-details-marker]:hidden print:hidden">
                           View {additionalTasks.length} more responsibilities
-                          <ChevronDown className="h-3.5 w-3.5 transition-transform group-open:rotate-180" />
+                          <ChevronDown className="h-3.5 w-3.5 transition-transform" />
                         </summary>
                         <ul className="mt-3 space-y-2 print:mt-0 print:space-y-1">
                           {additionalTasks.map((task) => (
