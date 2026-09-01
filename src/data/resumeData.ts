@@ -220,6 +220,11 @@ export const skillGroups = [
     title: "AI & Automation",
     skills: [
       "Prompt Engineering",
+      "Claude",
+      "Manus",
+      "Gemini",
+      "M365 Copilot",
+      "Replit",
       "ChatGPT / GitHub Copilot / Codex",
       "Cursor / Lovable",
       "AI-Assisted Testing",
