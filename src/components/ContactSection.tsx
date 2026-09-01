@@ -40,13 +40,35 @@ const ContactSection = () => {
                 <ShieldCheck className="h-4 w-4" />
                 Secure communication preferred
               </div>
-              <a
-                href={`mailto:${personalInfo.email}`}
-                className="mt-7 inline-flex items-center gap-2 rounded-md bg-primary px-5 py-3 text-sm font-semibold text-primary-foreground shadow-[0_0_24px_hsl(174_72%_50%_/_0.24)] transition hover:-translate-y-1 hover:shadow-[0_0_34px_hsl(174_72%_50%_/_0.4)]"
-              >
-                Start a conversation
-                <ArrowUpRight className="h-4 w-4" />
-              </a>
+              <div className="mt-8 flex flex-wrap items-center gap-6">
+                <a
+                  href={`mailto:${personalInfo.email}`}
+                  className="inline-flex items-center gap-2 rounded-md bg-primary px-6 py-3.5 text-sm font-semibold text-primary-foreground shadow-[0_0_24px_hsl(174_72%_50%_/_0.24)] transition hover:-translate-y-1 hover:shadow-[0_0_34px_hsl(174_72%_50%_/_0.4)]"
+                >
+                  Start a conversation
+                  <ArrowUpRight className="h-4 w-4" />
+                </a>
+
+                <div className="flex items-center gap-4 rounded-2xl border border-primary/20 bg-primary/[0.03] p-3 backdrop-blur-sm transition-colors hover:border-primary/40">
+                  <div className="relative h-16 w-16 overflow-hidden rounded-lg border border-primary/30 bg-white p-1 shadow-[0_0_15px_hsl(174_72%_50%_/_0.1)]">
+                    <img 
+                      src="/portfolio/whatsapp-qr.png" 
+                      alt="WhatsApp QR Code" 
+                      className="h-full w-full object-contain"
+                    />
+                  </div>
+                  <div>
+                    <div className="flex items-center gap-1.5 font-mono text-[10px] uppercase tracking-[0.2em] text-primary">
+                      <span className="relative flex h-1.5 w-1.5">
+                        <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75"></span>
+                        <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-primary"></span>
+                      </span>
+                      WhatsApp QR
+                    </div>
+                    <p className="mt-1 text-[10px] leading-tight text-muted-foreground">Scan to start<br/>instant protocol</p>
+                  </div>
+                </div>
+              </div>
             </div>
 
             <div className="grid gap-3 sm:grid-cols-2">
